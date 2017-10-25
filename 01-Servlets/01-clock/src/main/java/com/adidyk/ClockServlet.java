@@ -15,4 +15,5 @@ public class ClockServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("Current time is " + new Date());
     }
+
 }
