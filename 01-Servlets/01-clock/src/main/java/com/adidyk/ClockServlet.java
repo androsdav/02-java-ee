@@ -15,6 +15,7 @@ public class ClockServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("Current time is " + new Date());
         out.println("\n Hello Word !!!!!");
+        out.println("\n Its Servlets. ");
     }
 
 }
