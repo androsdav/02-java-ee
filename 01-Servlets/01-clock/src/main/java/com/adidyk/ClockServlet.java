@@ -14,6 +14,7 @@ public class ClockServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         out.println("Current time is " + new Date());
+        out.println("\n Hello Word !!!!!");
     }
 
 }
