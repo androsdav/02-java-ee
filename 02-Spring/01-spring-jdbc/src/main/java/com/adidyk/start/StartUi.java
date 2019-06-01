@@ -32,8 +32,6 @@ public class StartUi {
                 break;
             }
         }
-
-        System.out.println("I debug error now");
     }
 
 }
