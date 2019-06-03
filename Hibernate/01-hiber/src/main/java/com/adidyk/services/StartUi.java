@@ -25,7 +25,7 @@ public class StartUi {
         for (Developer developer : runDeveloper.listDeveloper()) {
             System.out.println(developer);
         }
-        runDeveloper.removeDeveloper(4);
+        //runDeveloper.removeDeveloper(4);
     }
 
 }
