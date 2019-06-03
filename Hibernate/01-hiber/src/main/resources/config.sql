@@ -1,17 +1,17 @@
 
 CREATE TABLE developers(
   id serial PRIMARY KEY,
-  firstName VARCHAR(50) NOT NULL,
-  lastName VARCHAR(50) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
   speciality VARCHAR(50) NOT NULL,
   salary VARCHAR(50) NOT NULL
 );
 
-INSERT INTO developers(firstName, lastName, speciality, salary)
+INSERT INTO developers(first_name, last_name, speciality, salary)
 VALUES ('aleks', 'svistun', 'doctor', '1000');
-INSERT INTO developers(firstName, lastName, speciality, salary)
+INSERT INTO developers(first_name, last_name, speciality, salary)
 VALUES ('vova', 'mishc', 'botan', '500');
-INSERT INTO developers(firstName, lastName, speciality, salary)
+INSERT INTO developers(first_name, last_name, speciality, salary)
 VALUES ('denis', 'bondar', 'heyter', '200');
 
 
