@@ -1,6 +1,6 @@
 package com.adidyk;
 
-import com.adidyk.models.Developer;
+import com.adidyk.pojo.Developer;
 
 /**
  * Class StartUi for create jar file and start program.
