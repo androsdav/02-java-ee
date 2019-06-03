@@ -11,7 +11,7 @@
 
 	 <modules>
                   <module>01-Servlets</module>
-                  <module>02-Spring</module>
+                  <module>Spring</module>
          </modules>
 
 </project>
