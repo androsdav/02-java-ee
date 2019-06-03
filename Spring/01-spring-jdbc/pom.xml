@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.adidyk.02-Spring.01-spring-jdbc</groupId>
+    <groupId>com.adidyk.Spring.01-spring-jdbc</groupId>
     <artifactId>01-spring-jdbc</artifactId>
     <version>1.0</version>
 
     <parent>
-        <groupId>com.adidyk.02-Spring</groupId>
-        <artifactId>02-Spring</artifactId>
+        <groupId>com.adidyk.Spring</groupId>
+        <artifactId>Spring</artifactId>
         <version>1.0</version>
     </parent>
 
