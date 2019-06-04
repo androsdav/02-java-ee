@@ -20,7 +20,7 @@ public class StartUi {
         Developer user = new Developer(1, "andreyUpdate", "diduk", "tehnick", "1000");
         System.out.println("test hibernate" + user);
         RunDeveloper runDeveloper = new RunDeveloper();
-        //runDeveloper.addDeveloper(user);
+        runDeveloper.addDeveloper(user);
         //runDeveloper.updateDeveloper(1, "88888");
         //runDeveloper.removeDeveloper(7);
         for (Developer developer : runDeveloper.listDeveloper()) {
