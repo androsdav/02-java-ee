@@ -1,3 +1,4 @@
+CREATE DATABASE base_developer;
 
 CREATE TABLE developers(
   id serial PRIMARY KEY,
@@ -13,6 +14,17 @@ INSERT INTO developers(first_name, last_name, speciality, salary)
 VALUES ('vova', 'mishc', 'botan', '500');
 INSERT INTO developers(first_name, last_name, speciality, salary)
 VALUES ('denis', 'bondar', 'heyter', '200');
+
+
+CREATE TABLE users(
+  id serial PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  profession VARCHAR(50) NOT NULL
+);
+
+INSERT INTO users(name, profession) VALUES('bob', 'doctor');
+INSERT INTO users(name, profession) VALUES('adolf', 'tiran');
+INSERT INTO users(name, profession) VALUES('amanda', 'team lead');
 
 
 
