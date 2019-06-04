@@ -16,12 +16,6 @@ VALUES ('denis', 'bondar', 'heyter', '200');
 
 
 
-INSERT INTO users(login, name) VALUES('goad', 'dilan');
-INSERT INTO users(login, name) VALUES('queen', 'amanda');
-INSERT INTO users(login, name) VALUES('baron', 'bob');
-
-
-
 SELECT * FROM users;
 DROP TABLE users;
 
