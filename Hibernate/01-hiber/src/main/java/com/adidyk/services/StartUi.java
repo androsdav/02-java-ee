@@ -16,6 +16,7 @@ public class StartUi {
      * @param arg - is nothing.
      */
     public static void main(String[] arg) {
+        System.out.println("branch develop ...");
         Developer user = new Developer(1, "andreyUpdate", "diduk", "tehnick", "1000");
         System.out.println("test hibernate" + user);
         RunDeveloper runDeveloper = new RunDeveloper();
