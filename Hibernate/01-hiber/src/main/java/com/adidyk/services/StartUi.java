@@ -27,7 +27,7 @@ public class StartUi {
         //for (Developer developer : runDeveloper.listDeveloper()) {
         //    System.out.println(developer);
         //}
-        //runDeveloper.removeDeveloper(4);
+        //runDeveloper.removeDeveloper(4);  dsdadasd
         RunUser runUser = new RunUser();
         runUser.updateUserById(new User(1, "Bob", "doca"));
         //runUser.removeUserById(new User(10));
