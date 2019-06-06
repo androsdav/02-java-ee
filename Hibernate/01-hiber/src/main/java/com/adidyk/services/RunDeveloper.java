@@ -1,6 +1,6 @@
 package com.adidyk.services;
 
-import com.adidyk.pojo.Developer;
+import com.adidyk.models.Developer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

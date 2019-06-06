@@ -1,4 +1,4 @@
-package com.adidyk.pojo;
+package com.adidyk.models;
 
 import java.util.Objects;
 

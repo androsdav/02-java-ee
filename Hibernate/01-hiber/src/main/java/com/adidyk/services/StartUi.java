@@ -1,8 +1,6 @@
 package com.adidyk.services;
 
-import com.adidyk.pojo.Developer;
-import com.adidyk.pojo.User;
-import com.adidyk.services.RunDeveloper;
+import com.adidyk.models.User;
 
 /**
  * Class StartUi for create jar file and start program.
