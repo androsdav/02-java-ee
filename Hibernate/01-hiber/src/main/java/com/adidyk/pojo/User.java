@@ -2,7 +2,7 @@ package com.adidyk.pojo;
 
 import java.util.Objects;
 
-public class User {
+ public class User {
 
     private int id;
 
