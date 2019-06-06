@@ -1,6 +1,7 @@
 package com.adidyk.services;
 
 import com.adidyk.pojo.Developer;
+import com.adidyk.pojo.User;
 import com.adidyk.services.RunDeveloper;
 
 /**
@@ -16,16 +17,26 @@ public class StartUi {
      * @param arg - is nothing.
      */
     public static void main(String[] arg) {
-        Developer user = new Developer(1, "andreyUpdate", "diduk", "tehnick", "1000");
-        System.out.println("test hibernate" + user);
-        RunDeveloper runDeveloper = new RunDeveloper();
-        //runDeveloper.addDeveloper(user);
+        //System.out.println("branch feature/add-item-comment ...");
+        //Developer develop = new Developer(1, "andreyUpdate", "diduk", "tehnick", "1000");
+        //System.out.println("test hibernate" + develop);
+        //RunDeveloper runDeveloper = new RunDeveloper();
+        //runDeveloper.addDeveloper(develop);
         //runDeveloper.updateDeveloper(1, "88888");
         //runDeveloper.removeDeveloper(7);
-        for (Developer developer : runDeveloper.listDeveloper()) {
-            System.out.println(developer);
+        //for (Developer developer : runDeveloper.listDeveloper()) {
+        //    System.out.println(developer);
+        //}
+        //runDeveloper.removeDeveloper(4);  dsdadasd
+        RunUser runUser = new RunUser();
+        runUser.updateUserById(new User(1, "Bob", "doca"));
+        //runUser.removeUserById(new User(10));
+        runUser.addUser(new User(1,"test_name","test_profession"));
+        System.out.println(runUser.getUserById(3));
+        for (User user : runUser.listUser()) {
+            System.out.println(user);
         }
-        //runDeveloper.removeDeveloper(4);
+
     }
 
 }
