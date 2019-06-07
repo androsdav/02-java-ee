@@ -26,6 +26,7 @@ public class StartUi {
         //    System.out.println(developer);
         //}
         //runDeveloper.removeDeveloper(4);  dsdadasd
+        System.out.println("Test branch ... ");
         RunUser runUser = new RunUser();
         runUser.updateUserById(new User(1, "Bob", "doca"));
         //runUser.removeUserById(new User(10));
