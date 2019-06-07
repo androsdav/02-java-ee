@@ -1,6 +1,8 @@
 package com.adidyk.services;
 
 import com.adidyk.models.User;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Class StartUi for create jar file and start program.
@@ -26,11 +28,18 @@ public class StartUi {
         //    System.out.println(developer);
         //}
         //runDeveloper.removeDeveloper(4);  dsdadasd
-        System.out.println("Test branch ... ");
-        RunUser runUser = new RunUser();
-        runUser.updateUserById(new User(1, "Bob", "doca"));
+        try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
+            RunUser runUser = new RunUser(factory);
+            runUser.addUser(new User(1, "gena", "gena"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+        /*
+        //runUser.updateUserById(new User(1, "Bob", "doca"));
         //runUser.removeUserById(new User(10));
-        runUser.addUser(new User(1,"test_name","test_profession"));
+        /*
         System.out.println(runUser.getUserById(3));
         for (User user : runUser.listUser()) {
             System.out.println(user);
@@ -39,6 +48,6 @@ public class StartUi {
         // May task on today.
         //Summer Mix 2019 - Best Of Deep House Sessions Music Chill Out Mix By DJ SteFan same  music, not bad..... maeby
 
-    }
+    }*/
 
 }

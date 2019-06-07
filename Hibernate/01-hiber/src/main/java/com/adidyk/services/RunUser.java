@@ -11,16 +11,22 @@ import java.util.List;
 
 public class RunUser {
 
-    private SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    private SessionFactory sessionFactory;
+
+    RunUser(SessionFactory factory) {
+        this.sessionFactory = factory;
+    }
 
     public void addUser(User user) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction;
-        transaction = session.beginTransaction();
-        session.save(user);
-        user.setProfession("update persistent object");
-        transaction.commit();
-        session.close();
+
+        try (Session session = sessionFactory.openSession()) {
+            session.beginTransaction();
+            session.save(user);
+            session.beginTransaction().commit();
+  //          session.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void updateUserById(User user) {
