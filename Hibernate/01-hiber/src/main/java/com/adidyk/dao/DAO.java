@@ -7,7 +7,7 @@ import java.util.List;
  * @param <Entity> - generic entity.
  * @param <Key> - generic key.
  */
-public interface DAO<Entity, Key> extends AutoCloseable {
+public interface DAO<Entity, Key> {
 
     /**
      * add - adds entity to database.

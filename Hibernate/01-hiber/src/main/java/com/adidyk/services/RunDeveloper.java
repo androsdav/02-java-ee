@@ -25,7 +25,7 @@ public class RunDeveloper {
         Developer developer = session.get(Developer.class, id);
         developer.setSalary(salary);
         session.update(developer);
-        session.beginTransaction().commit();
+        session.getTransaction().commit();
         session.close();
     }
 

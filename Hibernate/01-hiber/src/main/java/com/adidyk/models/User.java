@@ -2,21 +2,46 @@ package com.adidyk.models;
 
 import java.util.Objects;
 
- public class User {
+/**
+ * Class User.
+ */
+public class User {
 
+    /**
+     * @param id - user id.
+     */
     private int id;
 
+    /**
+     * @param name - user name.
+     */
     private String name;
 
+    /**
+     * @param profession - profession.
+     */
     private String profession;
 
+    /**
+     * User - constructor.
+     */
     public User() {
     }
 
+    /**
+     * User - constructor.
+     * @param id - user id.
+     */
     public User(int id) {
         this.id = id;
     }
 
+    /**
+     * User - constructor.
+     * @param id - user id.
+     * @param name - user name.
+     * @param profession - user profession.
+     */
     public User(int id, String name, String profession) {
         this.id = id;
         this.name = name;
