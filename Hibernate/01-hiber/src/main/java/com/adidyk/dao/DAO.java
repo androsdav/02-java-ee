@@ -1,5 +1,7 @@
 package com.adidyk.dao;
 
+import com.adidyk.models.User;
+
 import java.util.List;
 
 /**

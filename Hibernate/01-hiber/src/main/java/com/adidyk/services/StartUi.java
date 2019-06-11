@@ -6,6 +6,9 @@ import com.adidyk.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class StartUi for create jar file and start program.
  * @author Didyk Andrey (androsdav@bigmir.net).
@@ -20,8 +23,35 @@ public class StartUi {
      */
     public static void main(String[] arg) {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
-            DAO<User, String> userDAO = new UserDAO(factory);
-            userDAO.add(new User(1, "andros", "barbos"));
+            DAO<User, Integer> userDAO = new UserDAO(factory);
+            List<User> users = userDAO.getList();
+            for (User user : users) {
+                System.out.println(user);
+            }
+            //userDAO.add(new User(1, "Gena", "derector"));
+            RunUser runUser = new RunUser(new UserDAO(factory));
+            // add user
+            runUser.addUser(new User(1,"galanenko", "proffesor2"));
+            // update user by id
+            runUser.updateUserById(new User(100, "TM","wifi Genu"));
+            // remove user by id
+            runUser.removeUserById(200);
+            System.out.println(runUser.getUserById(200));
+            for (User item : runUser.listUser()) {
+                System.out.println(item);
+            }
+
+            /*
+            runUser.removeUserById(2);
+            runUser.getUserById(2);
+            */
+            /*
+
+            for (User item : runUser.listUser()) {
+                System.out.println(item);
+            }
+
+            */
         } catch (Exception ex) {
             ex.printStackTrace();
         }

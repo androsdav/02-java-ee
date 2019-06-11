@@ -48,51 +48,85 @@ public class User {
         this.profession = profession;
     }
 
+    /**
+     * getId - returns user id.
+     * @return - returns user id.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * setId - sets user id.
+     * @param id - user id.
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * getName - returns user name.
+     * @return - returns user name.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * setName - sets user name.
+     * @param name - user name.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * getProfession - returns user profession.
+     * @return - returns user profession.
+     */
     public String getProfession() {
         return profession;
     }
 
+    /**
+     * setProfession - sets user profession.
+     * @param profession - sets user profession.
+     */
     public void setProfession(String profession) {
         this.profession = profession;
     }
 
+    /**
+     * equals - returns true or false.
+     * @param obj - obj.
+     * @return - returns tru or false.
+     */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(profession, user.profession);
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        User user = (User) obj;
+        return this.getId() == user.id &&
+                Objects.equals(this.getName(), user.name) &&
+                Objects.equals(this.getProfession(), user.profession);
     }
 
+    /**
+     * hashCode - returns hashcode for user.
+     * @return - returns hashcode for user.
+     */
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, profession);
+        return Objects.hash(this.getId(), this.getName(), this.getProfession());
     }
 
+    /**
+     * toString - returns string format about user.
+     * @return - returns string format about user.
+     */
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", profesion='" + profession + '\'' +
-                '}';
+        return String.format("%s%s%s%s%s%s%s%s",
+                "User{", "id=", this.getId(), ", name=", this.getName(), ", profession=", this.getProfession(), "}");
     }
 }

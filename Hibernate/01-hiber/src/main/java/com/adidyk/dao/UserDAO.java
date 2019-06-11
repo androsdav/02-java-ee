@@ -3,15 +3,14 @@ package com.adidyk.dao;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Class UserDAO.
  */
-public class UserDAO implements DAO<User, String> {
+public class UserDAO implements DAO<User, Integer> {
 
     /**
      * @param factory - session factory.
@@ -49,8 +48,6 @@ public class UserDAO implements DAO<User, String> {
             session.beginTransaction();
             session.update(user);
             session.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -64,33 +61,37 @@ public class UserDAO implements DAO<User, String> {
             session.beginTransaction();
             session.remove(user);
             session.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 
+    /**
+     * get - returns user from table users by id.
+     * @param id - user id.
+     * @return - returns user id.
+     */
     @Override
-    public User get(String id) {
-        User result = null;
+    public User get(Integer id) {
+        User result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
             result = session.get(User.class, id);
             session.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
         return result;
     }
 
+    /**
+     * getList - returns list users from table users.
+     * @return - returns list users from table users.
+     */
     @Override
     public List<User> getList() {
-        List result = null;
+        List<User> result;
         try (Session session = this.factory.openSession()) {
-            result = session.createNamedQuery("FROM User").list();
+            session.beginTransaction();
+            result = session.createQuery("FROM User").list();
             session.getTransaction().commit();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+            }
         return result;
     }
 

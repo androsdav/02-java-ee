@@ -1,95 +1,89 @@
 package com.adidyk.services;
 
+import com.adidyk.dao.DAO;
 import com.adidyk.models.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.apache.log4j.Logger;
 
-import java.io.Closeable;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class RunUser.
+ */
+public class RunUser {
 
-public class RunUser implements AutoCloseable {
+    /**
+     * @param daoUser - daoUser.
+     */
+    private DAO<User, Integer> userDAO;
 
-    private SessionFactory factory;
+    /**
+     * @param logger - logger (link variable to object of class Logger).
+     */
+    private static final Logger logger = Logger.getLogger(RunUser.class);
 
-    RunUser() {
-
+    /**
+     * RunUser - constructor.
+     */
+    RunUser(DAO<User, Integer> userDAO) {
+        this.userDAO = userDAO;
     }
 
-    RunUser(SessionFactory factory) {
-        this.factory = factory;
+    /**
+     * addUser - adds user to table user
+     * @param user - user.
+     */
+    void addUser(User user) {
+        this.userDAO.add(user);
     }
 
-    public void addUser(User user) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
+    /**
+     * updateuserById - updates user by id.
+     * @param user - user id.
+     */
+    void updateUserById(User user) {
         try {
-            session.save(user);
-            transaction.commit();
+            this.userDAO.update(user);
         } catch (Exception ex) {
-            transaction.rollback();
-            throw ex;
-        } finally {
-            session.close();
+            logger.warn("user by id not found ...");
         }
+    }
 
-        //session.close();
-        //factory.close();
-
-        /*
-        try (Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
-            session.save(user);
-            session.beginTransaction().commit();
-  //          session.close();
+    /**
+     * removeUserById - removes user by id.
+     * @param id - user id.
+     */
+    public void removeUserById(int id) {
+        try {
+            this.userDAO.remove(new User(id));
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.warn("user b id not found ...");
         }
-        */
     }
 
-    @Override
-    public void close() throws Exception {
-        factory.close();
-        System.out.println(" [info]  method close ......");
-
+    /**
+     * getUserById - returns user by id.
+     * @param id -returns user by id.
+     * @return returns user by id.
+     */
+    public User getUserById(Integer id) {
+        User result;
+        if ((result = this.userDAO.get(id)) == null) {
+            logger.warn("user by id not found");
+        }
+        return result;
     }
 
-    public void updateUserById(User user) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        User userOld = session.get(User.class, user.getId());
-        userOld.setName(user.getName());
-        userOld.setProfession(user.getProfession());
-        //session.update(userOld);
-        transaction.commit();
-        session.close();
+    /**
+     * listUser - returns list users.
+     * @return - returns list users.
+     */
+    public ArrayList<User> listUser() {
+        List<User> result;
+        if ((result = this.userDAO.getList()) == null) {
+            logger.warn("user by id not found");
+        }
+        return (ArrayList<User>) result;
     }
-
-    public void removeUserById(User user) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.delete(user);
-        transaction.commit();
-        session.close();
-    }
-
-    public User getUserById(int id) {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        return session.get(User.class, id);
-    }
-
-    public List<User> listUser() {
-        Session session = factory.openSession();
-        Transaction transaction = session.beginTransaction();
-        List<User> users = session.createQuery("FROM User").list();
-        transaction.commit();
-        session.close();
-        return users;
-    }
-
 
 }

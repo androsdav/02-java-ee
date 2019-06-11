@@ -13,11 +13,12 @@ INSERT INTO users(name, profession) VALUES('bob', 'doctor');
 INSERT INTO users(name, profession) VALUES('adolf', 'tiran');
 INSERT INTO users(name, profession) VALUES('amanda', 'team lead');
 
-
-
-
-
+-- select all user from users
 SELECT * FROM users;
+
+
+
+
 DROP TABLE users;
 
 
