@@ -31,9 +31,9 @@ public class StartUi {
             //userDAO.add(new User(1, "Gena", "derector"));
             RunUser runUser = new RunUser(new UserDAO(factory));
             // add user
-            runUser.addUser(new User(1,"galanenko", "proffesor2"));
+            //runUser.addUser(new User(1,"galanenko", "proffesor2"));
             // update user by id
-            runUser.updateUserById(new User(100, "TM","wifi Genu"));
+            //runUser.updateUserById(new User(100, "TM","wifi Genu"));
             // remove user by id
             runUser.removeUserById(200);
             System.out.println(runUser.getUserById(200));

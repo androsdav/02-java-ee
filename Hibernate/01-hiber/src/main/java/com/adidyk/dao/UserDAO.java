@@ -3,8 +3,6 @@ package com.adidyk.dao;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
