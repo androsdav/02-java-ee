@@ -17,6 +17,17 @@ INSERT INTO users(name, profession) VALUES('amanda', 'team lead');
 SELECT * FROM users;
 
 
+-- create table items
+CREATE TABLE items (
+  id serial PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(50) NOT NULL,
+  user_id INT REFERENCES users(id)
+);
+
+-- insert item to table items to database base_hibernate_01
+INSERT INTO items(name, description, user_id) VALUES('buy car','i wont to buy car',2);
+
 
 
 DROP TABLE users;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.adidyk.models.Item" table="items">
+        <meta attribute="class-description">
+            This class contains developer's details.
+        </meta>
+        <id name="id" column="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="description" column="description" type="string"/>
+        <many-to-one name="user" column="user_id"
+                     class="com.adidyk.models.User"
+                     cascade="save-update"
+        />
+    </class>
+</hibernate-mapping>
