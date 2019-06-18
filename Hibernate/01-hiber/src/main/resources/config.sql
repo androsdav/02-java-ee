@@ -28,6 +28,22 @@ CREATE TABLE items (
 -- insert item to table items to database base_hibernate_01
 INSERT INTO items(name, description, user_id) VALUES('sell car','i wont to sell car',2);
 
+-- selects all item for user by id=2
+SELECT (SELECT users.name FROM users WHERE users.id='2'), items.id, items.name, items.description
+  FROM items
+  WHERE items.user_id = 2
+  ORDER BY items.id
+;
+
+
+
+SELECT product.id, product.name, product.type_id, product.expired_date, product.price,
+  (SELECT type.name AS type FROM type WHERE type.name = 'cheese')
+  FROM product
+  WHERE product.type_id IN (SELECT type.id FROM type WHERE type.name = 'cheese')
+  ORDER BY product.price
+;
+
 
 
 DROP TABLE users;

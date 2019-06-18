@@ -1,7 +1,6 @@
 package com.adidyk.dao;
 
 import com.adidyk.models.Item;
-import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -44,13 +43,11 @@ public class ItemDAO implements DAO<Item, Integer> {
      */
     @Override
     public void update(Item item) {
-        /*
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            session.update(user);
+            session.update(item);
             session.getTransaction().commit();
         }
-        */
     }
 
     /**
@@ -59,13 +56,11 @@ public class ItemDAO implements DAO<Item, Integer> {
      */
     @Override
     public void remove(Item item) {
-        /*
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            session.remove(user);
+            session.remove(item);
             session.getTransaction().commit();
         }
-        */
     }
 
     /**

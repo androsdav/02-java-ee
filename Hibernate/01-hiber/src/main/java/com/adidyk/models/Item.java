@@ -53,6 +53,13 @@ public class Item {
         this.description = description;
     }
 
+    /**
+     * Item - constructor.
+     * @param id - item id.
+     */
+    public Item(int id) {
+        this.id = id;
+    }
 
     /**
      * getId - returns item id.

@@ -27,7 +27,10 @@ public class StartUi {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
             RunUser runUser = new RunUser(new UserDAO(factory));
             RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
-            runItem.addItem(new Item(1, "testitem", "testitem"), 1);
+            runItem.addItem(new Item(1, "warik", "warik"), 100);
+            runItem.updateItemById(new Item(100,"peace","peace"));
+            runItem.removeItemById(200);
+            runUser.removeUserById(11);
             //ItemDAO itemDAO = new ItemDAO(factory);
             //Item item = new Item(1,"1", "1", new User(200,"androstest","androstest"));
             //itemDAO.add(item);

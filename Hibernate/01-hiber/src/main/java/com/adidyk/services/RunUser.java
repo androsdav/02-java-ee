@@ -56,7 +56,7 @@ public class RunUser {
         try {
             this.userDAO.remove(new User(id));
         } catch (Exception ex) {
-            logger.warn("user b id not found ...");
+            logger.warn("user by id not found ...");
         }
     }
 
