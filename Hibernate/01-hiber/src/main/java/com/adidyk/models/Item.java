@@ -29,6 +29,12 @@ public class Item {
 
     /**
      * Item - constructor.
+     */
+    public Item() {
+    }
+
+    /**
+     * Item - constructor.
      * @param id - item id.
      * @param name - item name.
      * @param description - description item.
@@ -156,8 +162,9 @@ public class Item {
      */
     @Override
     public String toString() {
-        return String.format("%s%s%s%s%s%s%s%s",
-                "Item{", "id=", this.getId(), ", name=", this.getName(), ", description=", this.getDescription(), "}");
+        return String.format("%s%s%s%s%s%s%s%s%s",
+                "Item{", "id=", this.getId(), ", name=", this.getName(), ", description=", this.getDescription(),
+                this.getUser(), "}");
     }
 
 }

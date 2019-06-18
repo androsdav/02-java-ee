@@ -1,6 +1,7 @@
 package com.adidyk.dao;
 
 import com.adidyk.models.Item;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -70,15 +71,15 @@ public class ItemDAO implements DAO<Item, Integer> {
      */
     @Override
     public Item get(Integer id) {
-        /*
-        User result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.get(User.class, id);
+            Item result = session.get(Item.class, id);
+            if (result != null) {
+                Hibernate.initialize(result.getUser());
+            }
             session.getTransaction().commit();
+            return result;
         }
-        */
-        return null;
     }
 
     /**
@@ -87,14 +88,16 @@ public class ItemDAO implements DAO<Item, Integer> {
      */
     @Override
     public List<Item> getList() {
-        /*
-        List<User> result;
+        List<Item> result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.createQuery("FROM User").list();
+            result = session.createQuery("FROM Item").list();
+            if (result != null) {
+                Hibernate.initialize(result.);
+            }
             session.getTransaction().commit();
         }
-        */
-        return null;
+        return result;
     }
+
 }

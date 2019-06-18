@@ -22,16 +22,40 @@ CREATE TABLE items (
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(50) NOT NULL,
-  user_id INT REFERENCES users(id)
+  user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
 -- insert item to table items to database base_hibernate_01
-INSERT INTO items(name, description, user_id) VALUES('sell car','i wont to sell car',2);
+INSERT INTO items(name, description, user_id) VALUES('alarm','sell car',1);
+INSERT INTO items(name, description, user_id) VALUES('alarm','sell cycle',1);
+INSERT INTO items(name, description, user_id) VALUES('2','2',2);
+INSERT INTO items(name, description, user_id) VALUES('3','3',3);
+INSERT INTO items(name, description, user_id) VALUES('33','33',3);
+INSERT INTO items(name, description, user_id) VALUES('4','4',4);
+INSERT INTO items(name, description, user_id) VALUES('alarm','test delete',1);
 
+-- selects all item for user by id=1
+SELECT (SELECT users.name FROM users WHERE users.id='1'), items.id, items.name, items.description
+  FROM items
+  WHERE items.user_id = 1
+  ORDER BY items.id
+;
 -- selects all item for user by id=2
 SELECT (SELECT users.name FROM users WHERE users.id='2'), items.id, items.name, items.description
   FROM items
   WHERE items.user_id = 2
+  ORDER BY items.id
+;
+-- selects all item for user by id=3
+SELECT (SELECT users.name FROM users WHERE users.id='3'), items.id, items.name, items.description
+  FROM items
+  WHERE items.user_id = 3
+  ORDER BY items.id
+;
+-- selects all item for user by id=4
+SELECT (SELECT users.name FROM users WHERE users.id='4'), items.id, items.name, items.description
+  FROM items
+  WHERE items.user_id = 4
   ORDER BY items.id
 ;
 

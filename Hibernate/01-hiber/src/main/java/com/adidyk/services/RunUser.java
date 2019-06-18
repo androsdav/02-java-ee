@@ -37,7 +37,7 @@ public class RunUser {
     }
 
     /**
-     * updateuserById - updates user by id.
+     * updateUserById - updates user by id.
      * @param user - user id.
      */
     void updateUserById(User user) {
@@ -52,7 +52,7 @@ public class RunUser {
      * removeUserById - removes user by id.
      * @param id - user id.
      */
-    public void removeUserById(int id) {
+    public void removeUserById(Integer id) {
         try {
             this.userDAO.remove(new User(id));
         } catch (Exception ex) {
@@ -62,7 +62,7 @@ public class RunUser {
 
     /**
      * getUserById - returns user by id.
-     * @param id -returns user by id.
+     * @param id - returns user by id.
      * @return returns user by id.
      */
     public User getUserById(Integer id) {

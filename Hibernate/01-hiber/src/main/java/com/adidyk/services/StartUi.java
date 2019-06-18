@@ -30,7 +30,14 @@ public class StartUi {
             runItem.addItem(new Item(1, "warik", "warik"), 100);
             runItem.updateItemById(new Item(100,"peace","peace"));
             runItem.removeItemById(200);
-            runUser.removeUserById(11);
+            runUser.removeUserById(100);
+            System.out.println("TEST GET ITEM BY ID");
+            Item item = runItem.getItemById(4);
+            System.out.println(item);
+            for (Item itemList : runItem.listItem()) {
+                System.out.println(itemList);
+            }
+            //System.out.println(item.getUser());
             //ItemDAO itemDAO = new ItemDAO(factory);
             //Item item = new Item(1,"1", "1", new User(200,"androstest","androstest"));
             //itemDAO.add(item);

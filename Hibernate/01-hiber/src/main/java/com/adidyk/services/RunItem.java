@@ -5,6 +5,9 @@ import com.adidyk.models.Item;
 import com.adidyk.models.User;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class Item.
  */
@@ -70,7 +73,32 @@ public class RunItem {
         } catch (Exception ex) {
             logger.warn("item not deleted because item by id not found");
         }
-
     }
+
+    /**
+     * getItemById - returns item by id.
+     * @param id - returns item by id.
+     * @return returns item by id.
+     */
+    public Item getItemById(Integer id) {
+        Item result;
+        if ((result = this.itemDAO.get(id)) == null) {
+            logger.warn("item not found because item by id not found");
+        }
+        return result;
+    }
+
+    /**
+     * listItem - returns list users.
+     * @return - returns list users.
+     */
+    public ArrayList<Item> listItem() {
+        List<Item> result;
+        if ((result = this.itemDAO.getList()) == null) {
+            logger.warn("user by id not found");
+        }
+        return (ArrayList<Item>) result;
+    }
+
 
 }
