@@ -26,7 +26,7 @@ CREATE TABLE items (
 );
 
 -- insert item to table items to database base_hibernate_01
-INSERT INTO items(name, description, user_id) VALUES('buy car','i wont to buy car',2);
+INSERT INTO items(name, description, user_id) VALUES('sell car','i wont to sell car',2);
 
 
 

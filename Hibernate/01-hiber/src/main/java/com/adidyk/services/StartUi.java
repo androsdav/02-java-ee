@@ -1,7 +1,9 @@
 package com.adidyk.services;
 
 import com.adidyk.dao.DAO;
+import com.adidyk.dao.ItemDAO;
 import com.adidyk.dao.UserDAO;
+import com.adidyk.models.Item;
 import com.adidyk.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,6 +25,13 @@ public class StartUi {
      */
     public static void main(String[] arg) {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
+            RunUser runUser = new RunUser(new UserDAO(factory));
+            RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
+            runItem.addItem(new Item(1, "testitem", "testitem"), 1);
+            //ItemDAO itemDAO = new ItemDAO(factory);
+            //Item item = new Item(1,"1", "1", new User(200,"androstest","androstest"));
+            //itemDAO.add(item);
+            /*
             DAO<User, Integer> userDAO = new UserDAO(factory);
             List<User> users = userDAO.getList();
             for (User user : users) {

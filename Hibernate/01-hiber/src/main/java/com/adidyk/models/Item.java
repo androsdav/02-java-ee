@@ -42,6 +42,19 @@ public class Item {
     }
 
     /**
+     * Item - constructor.
+     * @param id - item id.
+     * @param name - item name.
+     * @param description - description item.
+     */
+    public Item(int id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+
+    /**
      * getId - returns item id.
      * @return - returns item id.
      */
