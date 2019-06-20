@@ -1,15 +1,10 @@
 package com.adidyk.services;
 
-import com.adidyk.dao.DAO;
 import com.adidyk.dao.ItemDAO;
 import com.adidyk.dao.UserDAO;
 import com.adidyk.models.Item;
-import com.adidyk.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class StartUi for create jar file and start program.

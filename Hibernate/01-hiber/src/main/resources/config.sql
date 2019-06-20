@@ -1,30 +1,26 @@
--- create data base
+------------------------------------------- create data base -------------------------------------------
 CREATE DATABASE base_hibernate_01;
 
--- create table users
+------------------------------------------- create table users -------------------------------------------
 CREATE TABLE users(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   profession VARCHAR(50) NOT NULL
 );
-
 -- insert users to table users to database base_hibernate_01
 INSERT INTO users(name, profession) VALUES('bob', 'doctor');
 INSERT INTO users(name, profession) VALUES('adolf', 'tiran');
 INSERT INTO users(name, profession) VALUES('amanda', 'team lead');
-
 -- select all user from users
 SELECT * FROM users;
 
-
--- create table items
+------------------------------------------- create table items -------------------------------------------
 CREATE TABLE items (
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(50) NOT NULL,
   user_id INT REFERENCES users(id) ON DELETE CASCADE
 );
-
 -- insert item to table items to database base_hibernate_01
 INSERT INTO items(name, description, user_id) VALUES('alarm','sell car',1);
 INSERT INTO items(name, description, user_id) VALUES('alarm','sell cycle',1);
@@ -33,7 +29,6 @@ INSERT INTO items(name, description, user_id) VALUES('3','3',3);
 INSERT INTO items(name, description, user_id) VALUES('33','33',3);
 INSERT INTO items(name, description, user_id) VALUES('4','4',4);
 INSERT INTO items(name, description, user_id) VALUES('alarm','test delete',1);
-
 -- selects all item for user by id=1
 SELECT (SELECT users.name FROM users WHERE users.id='1'), items.id, items.name, items.description
   FROM items
@@ -58,6 +53,15 @@ SELECT (SELECT users.name FROM users WHERE users.id='4'), items.id, items.name, 
   WHERE items.user_id = 4
   ORDER BY items.id
 ;
+
+------------------------------------------- create table comments -------------------------------------------
+CREATE TABLE comments (
+  id serial PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(50) NOT NULL
+);
+
+
 
 
 

@@ -93,7 +93,9 @@ public class ItemDAO implements DAO<Item, Integer> {
             session.beginTransaction();
             result = session.createQuery("FROM Item").list();
             if (result != null) {
-                Hibernate.initialize(result.);
+                for (Item item : result) {
+                    Hibernate.initialize(item.getUser());
+                }
             }
             session.getTransaction().commit();
         }
