@@ -3,6 +3,7 @@ package com.adidyk.services;
 import com.adidyk.dao.ItemDAO;
 import com.adidyk.dao.UserDAO;
 import com.adidyk.models.Item;
+import com.adidyk.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -21,6 +22,12 @@ public class StartUi {
     public static void main(String[] arg) {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
             RunUser runUser = new RunUser(new UserDAO(factory));
+            for (User user : runUser.listUser() ) {
+                System.out.println(user);
+            }
+
+
+            /*
             RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
             runItem.addItem(new Item(1, "warik", "warik"), 100);
             runItem.updateItemById(new Item(100,"peace","peace"));
@@ -28,10 +35,14 @@ public class StartUi {
             runUser.removeUserById(100);
             System.out.println("TEST GET ITEM BY ID");
             Item item = runItem.getItemById(4);
-            System.out.println(item);
+            System.out.println("\nRESULT -> GET BY ID: " + item);
             for (Item itemList : runItem.listItem()) {
                 System.out.println(itemList);
             }
+            */
+
+
+
             //System.out.println(item.getUser());
             //ItemDAO itemDAO = new ItemDAO(factory);
             //Item item = new Item(1,"1", "1", new User(200,"androstest","androstest"));

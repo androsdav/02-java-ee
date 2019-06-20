@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,7 +62,7 @@ public class ItemDAO implements DAO<Item, Integer> {
             session.beginTransaction();
             session.remove(item);
             session.getTransaction().commit();
-        }
+         }
     }
 
     /**
@@ -75,7 +76,7 @@ public class ItemDAO implements DAO<Item, Integer> {
             session.beginTransaction();
             Item result = session.get(Item.class, id);
             if (result != null) {
-                Hibernate.initialize(result.getUser());
+                //Hibernate.initialize(result.getUser());
             }
             session.getTransaction().commit();
             return result;
@@ -91,12 +92,15 @@ public class ItemDAO implements DAO<Item, Integer> {
         List<Item> result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.createQuery("FROM Item").list();
+            //result.addAll( session.createQuery("FROM Item").list();
+            result = session.createQuery("FROM Item WHERE Item.id=3").list();
+
             if (result != null) {
                 for (Item item : result) {
                     Hibernate.initialize(item.getUser());
                 }
             }
+
             session.getTransaction().commit();
         }
         return result;

@@ -87,7 +87,7 @@ public class UserDAO implements DAO<User, Integer> {
         List<User> result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.createQuery("FROM User").list();
+            result = session.createQuery("FROM User WHERE User.id=3").list();
             session.getTransaction().commit();
             }
         return result;
