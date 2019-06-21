@@ -22,6 +22,7 @@ public class StartUi {
     public static void main(String[] arg) {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
             RunUser runUser = new RunUser(new UserDAO(factory));
+            System.out.println();
             for (User user : runUser.listUser() ) {
                 System.out.println(user);
             }

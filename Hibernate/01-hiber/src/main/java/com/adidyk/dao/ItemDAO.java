@@ -93,7 +93,7 @@ public class ItemDAO implements DAO<Item, Integer> {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
             //result.addAll( session.createQuery("FROM Item").list();
-            result = session.createQuery("FROM Item WHERE Item.id=3").list();
+            result = session.createQuery("SELECT id FROM Item WHERE id=3").list();
 
             if (result != null) {
                 for (Item item : result) {

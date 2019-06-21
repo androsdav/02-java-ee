@@ -3,6 +3,8 @@ package com.adidyk.dao;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
 import java.util.List;
 
 /**
@@ -84,12 +86,29 @@ public class UserDAO implements DAO<User, Integer> {
      */
     @Override
     public List<User> getList() {
-        List<User> result;
+        List<User> result = null;
+        Query query;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.createQuery("FROM User WHERE User.id=3").list();
+            query = session.createQuery("FROM User AS u WHERE u.id > 10 and u.id < 20 ORDER BY u.id ASC");
+            //query = session.createQuery("SELECT COUNT(u) FROM User AS u GROUP BY u.name ORDER BY u.id DESC");
+            //query = session.createQuery("FROM User AS u WHERE u.id > 10 and u.id < 20");
+            //query.setParameter("setName", "galanenko");
+            //query.setParameter("setProfession", "proffesor");
+            result = query.list();
+            System.out.println(result);
+            /*
+            String hql = "FROM User where name = :paramName";
+            query = session.createQuery(hql);
+            query.setParameter("paramName", "Alex");
+            result = query.list();
+            */
+
+            //result = session.createQuery("FROM User WHERE name=:'paramName' and id>13 and id<20").list();
+
             session.getTransaction().commit();
-            }
+
+        }
         return result;
     }
 
