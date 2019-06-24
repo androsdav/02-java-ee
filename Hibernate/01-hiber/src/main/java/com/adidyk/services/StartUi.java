@@ -7,6 +7,8 @@ import com.adidyk.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.List;
+
 /**
  * Class StartUi for create jar file and start program.
  * @author Didyk Andrey (androsdav@bigmir.net).
@@ -15,17 +17,38 @@ import org.hibernate.cfg.Configuration;
  */
 public class StartUi {
 
+    public static List<Item> list;
+
     /**
      * main - creates jar file and runs program.
      * @param arg - is nothing.
      */
     public static void main(String[] arg) {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
+            /*
             RunUser runUser = new RunUser(new UserDAO(factory));
             System.out.println();
             for (User user : runUser.listUser() ) {
                 System.out.println(user);
             }
+            */
+            ItemDAO itemDAO = new ItemDAO(factory);
+            list = itemDAO.getList();
+            for (Item item : list) {
+                System.out.println(item);
+            }
+            factory.close();
+            /*
+            System.out.println();
+            System.out.println(itemDAO.get(1));
+            */
+
+            /*
+            System.out.println();
+            for (Item item : itemDAO.getList()) {
+                System.out.println(item);
+            }
+            */
 
 
             /*
@@ -78,9 +101,15 @@ public class StartUi {
             }
 
             */
+            factory.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        System.out.println();
+        for (Item item : list) {
+            System.out.println(item.getUser().getName());
+        }
+
     }
 
 }

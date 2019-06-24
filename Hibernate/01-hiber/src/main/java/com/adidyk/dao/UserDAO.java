@@ -87,16 +87,14 @@ public class UserDAO implements DAO<User, Integer> {
     @Override
     public List<User> getList() {
         List<User> result = null;
-        Query query;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            query = session.createQuery("FROM User AS u WHERE u.id > 10 and u.id < 20 ORDER BY u.id ASC");
+            result = session.createQuery("FROM User").list();
             //query = session.createQuery("SELECT COUNT(u) FROM User AS u GROUP BY u.name ORDER BY u.id DESC");
             //query = session.createQuery("FROM User AS u WHERE u.id > 10 and u.id < 20");
             //query.setParameter("setName", "galanenko");
             //query.setParameter("setProfession", "proffesor");
-            result = query.list();
-            System.out.println(result);
+            //System.out.println(result);
             /*
             String hql = "FROM User where name = :paramName";
             query = session.createQuery(hql);

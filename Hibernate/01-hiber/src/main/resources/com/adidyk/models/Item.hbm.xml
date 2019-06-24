@@ -15,6 +15,7 @@
         <many-to-one name="user" column="user_id"
                      class="com.adidyk.models.User"
                      cascade="save-update"
+                     lazy="false"
                      fetch="join"
         />
     </class>

@@ -92,15 +92,12 @@ public class ItemDAO implements DAO<Item, Integer> {
         List<Item> result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
+            result = session.createQuery("SELECT i FROM Item AS i INNER JOIN User AS u ON (i.user = u)").list();
+            //System.out.println(result);
             //result.addAll( session.createQuery("FROM Item").list();
-            result = session.createQuery("SELECT id FROM Item WHERE id=3").list();
-
-            if (result != null) {
-                for (Item item : result) {
-                    Hibernate.initialize(item.getUser());
-                }
-            }
-
+            //result = session.createQuery("SELECT i FROM Item AS i INNER JOIN FETCH User AS u ON (i.user = u)").list();
+            //System.out.println(result);
+            //System.out.println();
             session.getTransaction().commit();
         }
         return result;

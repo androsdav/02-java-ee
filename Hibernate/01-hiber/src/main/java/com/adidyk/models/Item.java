@@ -162,9 +162,9 @@ public class Item {
      */
     @Override
     public String toString() {
-        return String.format("%s%s%s%s%s%s%s%s%s",
+        return String.format("%s%s%s%s%s%s%s%s%s%s",
                 "Item{", "id=", this.getId(), ", name=", this.getName(), ", description=", this.getDescription(),
-                this.getUser(), "}");
+                "  ", this.getUser(), "}");
     }
 
 }
