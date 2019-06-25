@@ -33,11 +33,14 @@ public class StartUi {
             }
             */
             ItemDAO itemDAO = new ItemDAO(factory);
+
+            /*
             list = itemDAO.getList();
             for (Item item : list) {
                 System.out.println(item);
             }
             factory.close();
+            */
             /*
             System.out.println();
             System.out.println(itemDAO.get(1));
