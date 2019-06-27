@@ -4,9 +4,6 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.adidyk.models.Item" table="items">
-        <meta attribute="class-description">
-            This class contains developer's details.
-        </meta>
         <id name="id" column="id" type="int">
             <generator class="identity"/>
         </id>
@@ -15,8 +12,12 @@
         <many-to-one name="user" column="user_id"
                      class="com.adidyk.models.User"
                      cascade="save-update"
-                     lazy="false"
                      fetch="join"
+                     lazy="false"
         />
+        <bag name="comments" cascade="all" lazy="false" fetch="join">
+            <key column="comment_id" not-null="false"/>
+            <one-to-many class="com.adidyk.models.Item"/>
+        </bag>
     </class>
 </hibernate-mapping>

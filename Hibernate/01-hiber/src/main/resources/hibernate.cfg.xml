@@ -13,5 +13,6 @@
 
         <mapping resource="com/adidyk/models/User.hbm.xml"/>
         <mapping resource="com/adidyk/models/Item.hbm.xml"/>
+        <mapping resource="com/adidyk/models/Comment.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

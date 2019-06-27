@@ -1,5 +1,7 @@
 package com.adidyk.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -26,6 +28,11 @@ public class Item {
      * @param user - item user.
      */
     private User user;
+
+    /**
+     * @param comments - list comments.
+     */
+    private List<Comment> comments = new ArrayList<>();
 
     /**
      * Item - constructor.
@@ -132,6 +139,23 @@ public class Item {
     }
 
     /**
+     * getComments - returns list comments.
+     * @return - returns lis comments.
+     */
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    /**
+     * setComments - sets comments.
+     * @param comments - list comments.
+     */
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    /**
      * equals - returns true or false.
      * @param obj - obj.
      * @return - returns true or false.
@@ -141,10 +165,11 @@ public class Item {
         if (this == obj) return true;
         if (!(obj instanceof Item)) return false;
         Item item = (Item) obj;
-        return id == item.id &&
+        return this.getId() == item.id &&
                 Objects.equals(this.getName(), item.name) &&
                 Objects.equals(this.getDescription(), item.description) &&
-                Objects.equals(this.getUser(), item.user);
+                Objects.equals(this.getUser(), item.user) &&
+                Objects.equals(this.getComments(), item.comments);
     }
 
     /**
@@ -153,18 +178,18 @@ public class Item {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.getName(), this.getDescription(), this.getUser());
+        return Objects.hash(this.getId(), this.getName(), this.getDescription(), this.getUser(), this.getComments());
     }
 
-    /**
-     * toString - returns string format about user.
-     * @return - returns string format about user.
-     */
     @Override
     public String toString() {
-        return String.format("%s%s%s%s%s%s%s%s%s%s",
-                "Item{", "id=", this.getId(), ", name=", this.getName(), ", description=", this.getDescription(),
-                "  ", this.getUser(), "}");
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", user=" + user +
+                ", comments=" + comments +
+                '}';
     }
 
 }

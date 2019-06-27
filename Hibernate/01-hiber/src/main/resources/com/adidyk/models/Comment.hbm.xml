@@ -3,11 +3,11 @@
         "-//Hibernate/Hibernate Mapping DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.adidyk.models.User" table="users">
+    <class name="com.adidyk.models.Comment" table="comments">
         <id name="id" column="id" type="int">
             <generator class="identity"/>
         </id>
         <property name="name" column="name" type="string"/>
-        <property name="profession" column="profession" type="string"/>
+        <property name="description" column="description" type="string"/>
     </class>
 </hibernate-mapping>

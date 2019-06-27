@@ -1,6 +1,7 @@
 package com.adidyk.services;
 
 import com.adidyk.dao.DAO;
+import com.adidyk.models.Comment;
 import com.adidyk.models.Item;
 import com.adidyk.models.User;
 import org.apache.log4j.Logger;
@@ -66,7 +67,7 @@ public class RunItem {
      * removeUserById - removes item by id.
      * @param id - item id.
      */
-    void removeItemById(int id) {
+    void removeItemById(Integer id) {
         try {
             this.itemDAO.remove(new Item(id));
         } catch (Exception ex) {
@@ -97,6 +98,24 @@ public class RunItem {
             logger.warn("user by id not found");
         }
         return (ArrayList<Item>) result;
+    }
+
+    /**
+     * addComment - adds comment to item.
+     * @param comment - comment.
+     */
+    public void addComment(Integer id, Comment comment) {
+        Item result = this.getItemById(id);
+        System.out.println(result);
+        if (result != null) {
+            List<Comment> list = new ArrayList<>();
+            list.add(comment);
+            result.setComments(list);
+            System.out.println(result);
+            this.updateItemById(result);
+        } else {
+            logger.warn("comment not added because item by id not found");
+        }
     }
 
 }

@@ -1,11 +1,9 @@
 package com.adidyk.dao;
 
+import com.adidyk.models.Comment;
 import com.adidyk.models.Item;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,9 +73,6 @@ public class ItemDAO implements DAO<Item, Integer> {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
             Item result = session.get(Item.class, id);
-            if (result != null) {
-                //Hibernate.initialize(result.getUser());
-            }
             session.getTransaction().commit();
             return result;
         }
@@ -92,12 +87,14 @@ public class ItemDAO implements DAO<Item, Integer> {
         List<Item> result;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.createQuery("SELECT i FROM Item AS i INNER JOIN User AS u ON (i.user = u)").list();
-            //System.out.println(result);
-            //result.addAll( session.createQuery("FROM Item").list();
-            //result = session.createQuery("SELECT i FROM Item AS i INNER JOIN FETCH User AS u ON (i.user = u)").list();
-            //System.out.println(result);
-            //System.out.println();
+            result = session.createQuery("FROM Item").list();
+            /*
+            System.out.println();
+            for (Item item : result) {
+                System.out.println(item);
+            }
+            System.out.println();
+            */
             session.getTransaction().commit();
         }
         return result;

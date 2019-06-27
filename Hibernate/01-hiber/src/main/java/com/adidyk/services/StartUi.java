@@ -2,11 +2,14 @@ package com.adidyk.services;
 
 import com.adidyk.dao.ItemDAO;
 import com.adidyk.dao.UserDAO;
+import com.adidyk.models.Comment;
 import com.adidyk.models.Item;
 import com.adidyk.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,18 +24,43 @@ public class StartUi {
 
     /**
      * main - creates jar file and runs program.
+     *
      * @param arg - is nothing.
      */
     public static void main(String[] arg) {
+        /*
+        User testUser = new User(1, "name user", "profession user");
+        Item testItem = new Item (1, "name item", "desc item", testUser);
+        System.out.println(testItem);
+        System.out.println(testItem.hashCode());
+        Comment comment1 = new Comment(1, "comment1", "desc1");
+        Comment comment2 = new Comment(2, "comment2", "desc2");
+        ArrayList<Comment> list = new ArrayList<>();
+        list.add(comment1);
+        list.add(comment2);
+        testItem.setComments(list);
+        System.out.println(testItem);
+        System.out.println(testItem.hashCode());
+        */
+
+        //Item item = null;
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
-            /*
             RunUser runUser = new RunUser(new UserDAO(factory));
+            RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
             System.out.println();
-            for (User user : runUser.listUser() ) {
-                System.out.println(user);
+            for (Item item : runItem.listItem()) {
+                System.out.println(item);
             }
-            */
+            runItem.addComment(4,new Comment(1, "about sex", "sex is good"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+}
+        /*
             ItemDAO itemDAO = new ItemDAO(factory);
+            item = itemDAO.get(1);
+            System.out.println("factory : " + item);
 
             /*
             list = itemDAO.getList();
@@ -104,15 +132,10 @@ public class StartUi {
             }
 
             */
+            /*
             factory.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println();
-        for (Item item : list) {
-            System.out.println(item.getUser().getName());
-        }
-
-    }
-
-}
+        System.out.println("main : " + item);
+        */
