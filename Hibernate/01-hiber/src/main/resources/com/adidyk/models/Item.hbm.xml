@@ -15,9 +15,9 @@
                      fetch="join"
                      lazy="false"
         />
-        <bag name="comments" cascade="all" lazy="false" fetch="join">
-            <key column="comment_id" not-null="false"/>
-            <one-to-many class="com.adidyk.models.Item"/>
+        <bag name="comments" cascade="all" lazy="false" fetch="join" inverse="true">
+            <key column="item_id" not-null="false"/>
+            <one-to-many class="com.adidyk.models.Comment"/>
         </bag>
     </class>
 </hibernate-mapping>

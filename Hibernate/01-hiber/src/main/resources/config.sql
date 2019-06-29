@@ -7,31 +7,25 @@ CREATE TABLE users(
   name VARCHAR(50) NOT NULL,
   profession VARCHAR(50) NOT NULL
 );
--- insert users to table users to database base_hibernate_01
-INSERT INTO users(name, profession) VALUES('bob', 'doctor');
-INSERT INTO users(name, profession) VALUES('adolf', 'driver');
-INSERT INTO users(name, profession) VALUES('amanda', 'designer');
--- select all user from users
-SELECT * FROM users;\q
-
-
-------------------------------------------- create table comments -------------------------------------------
+------------------------------------------ create table comments ------------------------------------------
 CREATE TABLE comments(
   id serial PRIMARY KEY,
   name VARCHAR(50) DEFAULT NULL,
-  description VARCHAR(50) DEFAULT NULL
+  description VARCHAR(50) DEFAULT NULL,
+  item_id INT REFERENCES items(id) DEFAULT NULL
 );
--- insert comment
-INSERT INTO comments(name, description) VALUES
-
 ------------------------------------------- create table items -------------------------------------------
 CREATE TABLE items(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(50) NOT NULL,
-  user_id INT REFERENCES users(id),
-  comment_id INT REFERENCES comments(id)
+  user_id INT REFERENCES users(id) NOT NULL
 );
+---------------------------------------------------------------------------------------------------------
+-- insert users to table users to database base_hibernate_01
+INSERT INTO users(name, profession) VALUES('bob', 'doctor');
+INSERT INTO users(name, profession) VALUES('adolf', 'driver');
+INSERT INTO users(name, profession) VALUES('amanda', 'designer');
 
 -- insert item to table items to database base_hibernate_01
 INSERT INTO items(name, description, user_id) VALUES('work','search work',1);
@@ -41,6 +35,12 @@ INSERT INTO items(name, description, user_id) VALUES('sex','need sex',2);
 INSERT INTO items(name, description, user_id) VALUES('car','sell car',1);
 INSERT INTO items(name, description, user_id) VALUES('bay','total bay',2);
 INSERT INTO items(name, description, user_id) VALUES('sell','sell all',1);
+
+-- insert comment
+INSERT INTO comments(name, description, item_id) VALUES('about sex', 'sex is good', 4);
+
+
+
 -- selects all item for user by id=1
 SELECT (SELECT users.name FROM users WHERE users.id='1'), items.id, items.name, items.description
   FROM items

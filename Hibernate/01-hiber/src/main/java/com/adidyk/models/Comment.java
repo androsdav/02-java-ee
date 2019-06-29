@@ -23,6 +23,11 @@ public class Comment {
     private String description;
 
     /**
+     *
+     */
+    private Item item;
+
+    /**
      * Comment - constructor.
      */
     public Comment() {

@@ -105,14 +105,14 @@ public class RunItem {
      * @param comment - comment.
      */
     public void addComment(Integer id, Comment comment) {
-        Item result = this.getItemById(id);
-        System.out.println(result);
-        if (result != null) {
+        Item item = this.getItemById(id);
+        System.out.println(item);
+        if (item != null) {
             List<Comment> list = new ArrayList<>();
             list.add(comment);
-            result.setComments(list);
-            System.out.println(result);
-            this.updateItemById(result);
+            item.setComments(list);
+            System.out.println(item);
+            this.updateItemById(item);
         } else {
             logger.warn("comment not added because item by id not found");
         }

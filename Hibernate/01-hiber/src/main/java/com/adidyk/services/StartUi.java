@@ -51,7 +51,15 @@ public class StartUi {
             for (Item item : runItem.listItem()) {
                 System.out.println(item);
             }
-            runItem.addComment(4,new Comment(1, "about sex", "sex is good"));
+            //runItem.addComment(4,new Comment(1, "about sex", "sex is good"));
+            ArrayList<Comment> list = new ArrayList<>();
+            Comment comment1 = new Comment(1, "1", "1");
+            Comment comment2 = new Comment(1, "2", "2");
+            list.add(comment1);
+            list.add(comment2);
+            Item item = new Item(1,"test", "test");
+            item.setComments(list);
+            runItem.addItem(item, 1);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
