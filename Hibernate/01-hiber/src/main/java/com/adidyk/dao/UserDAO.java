@@ -3,8 +3,6 @@ package com.adidyk.dao;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-
 import java.util.List;
 
 /**
@@ -71,13 +69,13 @@ public class UserDAO implements DAO<User, Integer> {
      */
     @Override
     public User get(Integer id) {
-        User result;
+        User user;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.get(User.class, id);
+            user = session.get(User.class, id);
             session.getTransaction().commit();
         }
-        return result;
+        return user;
     }
 
     /**
@@ -86,13 +84,13 @@ public class UserDAO implements DAO<User, Integer> {
      */
     @Override
     public List<User> getList() {
-        List<User> result;
+        List<User> list;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            result = session.createQuery("FROM User").list();
+            list = session.createQuery("FROM User").list();
             session.getTransaction().commit();
         }
-        return result;
+        return list;
     }
 
 }

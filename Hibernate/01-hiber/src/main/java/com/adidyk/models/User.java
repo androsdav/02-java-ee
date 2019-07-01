@@ -38,12 +38,10 @@ public class User {
 
     /**
      * User - constructor.
-     * @param id - user id.
      * @param name - user name.
      * @param profession - user profession.
      */
-    public User(int id, String name, String profession) {
-        this.id = id;
+    public User(String name, String profession) {
         this.name = name;
         this.profession = profession;
     }

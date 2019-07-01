@@ -66,11 +66,11 @@ public class RunUser {
      * @return returns user by id.
      */
     public User getUserById(Integer id) {
-        User result;
-        if ((result = this.userDAO.get(id)) == null) {
+        User user;
+        if ((user = this.userDAO.get(id)) == null) {
             logger.warn("user by id not found");
         }
-        return result;
+        return user;
     }
 
     /**
@@ -78,11 +78,11 @@ public class RunUser {
      * @return - returns list users.
      */
     public ArrayList<User> listUser() {
-        List<User> result;
-        if ((result = this.userDAO.getList()) == null) {
+        List<User> list;
+        if ((list = this.userDAO.getList()) == null) {
             logger.warn("user by id not found");
         }
-        return (ArrayList<User>) result;
+        return (ArrayList<User>) list;
     }
 
 }

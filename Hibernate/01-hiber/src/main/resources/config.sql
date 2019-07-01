@@ -7,19 +7,19 @@ CREATE TABLE users(
   name VARCHAR(50) NOT NULL,
   profession VARCHAR(50) NOT NULL
 );
------------------------------------------- create table comments ------------------------------------------
-CREATE TABLE comments(
-  id serial PRIMARY KEY,
-  name VARCHAR(50) DEFAULT NULL,
-  description VARCHAR(50) DEFAULT NULL,
-  item_id INT REFERENCES items(id) DEFAULT NULL
-);
 ------------------------------------------- create table items -------------------------------------------
 CREATE TABLE items(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(50) NOT NULL,
-  user_id INT REFERENCES users(id) NOT NULL
+  user_id INT REFERENCES users(id) ON DELETE SET NULL
+);
+------------------------------------------ create table comments ------------------------------------------
+CREATE TABLE comments(
+  id serial PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(50) NOT NULL,
+  item_id INT REFERENCES items(id) ON DELETE CASCADE
 );
 ---------------------------------------------------------------------------------------------------------
 -- insert users to table users to database base_hibernate_01
@@ -38,6 +38,7 @@ INSERT INTO items(name, description, user_id) VALUES('sell','sell all',1);
 
 -- insert comment
 INSERT INTO comments(name, description, item_id) VALUES('about sex', 'sex is good', 4);
+INSERT INTO comments(name, description, item_id) VALUES('nothing', 'nothing', 4);
 
 
 

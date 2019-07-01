@@ -39,13 +39,16 @@ public class ItemDAO implements DAO<Item, Integer> {
 
     /**
      * update - updates user in table users in database by id.
-     * @param item - user.
+     * @param newItem - user.
      */
     @Override
-    public void update(Item item) {
+    public void update(Item newItem) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            session.update(item);
+            Item oldItem = session.get(Item.class, newItem.getId());
+            oldItem.setName(newItem.getName());
+            oldItem.setDescription(newItem.getDescription());
+            session.update(oldItem);
             session.getTransaction().commit();
         }
     }
@@ -88,16 +91,21 @@ public class ItemDAO implements DAO<Item, Integer> {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
             result = session.createQuery("FROM Item").list();
-            /*
-            System.out.println();
-            for (Item item : result) {
-                System.out.println(item);
-            }
-            System.out.println();
-            */
             session.getTransaction().commit();
         }
         return result;
+    }
+
+    /**
+     * addComment - adds comment to item.
+     * @param comment - comment.
+     */
+    public void addComment(Comment comment) {
+        try (Session session = this.factory.openSession()) {
+            session.beginTransaction();
+            session.save(comment);
+            session.getTransaction().commit();
+        }
     }
 
 }

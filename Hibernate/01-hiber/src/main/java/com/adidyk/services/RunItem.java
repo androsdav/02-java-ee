@@ -1,6 +1,6 @@
 package com.adidyk.services;
 
-import com.adidyk.dao.DAO;
+import com.adidyk.dao.ItemDAO;
 import com.adidyk.models.Comment;
 import com.adidyk.models.Item;
 import com.adidyk.models.User;
@@ -16,7 +16,7 @@ public class RunItem {
     /**
      * @param daoUser - daoUser.
      */
-    private DAO<Item, Integer> itemDAO;
+    private ItemDAO itemDAO;
 
     /**
      * @param runUser - runUser.
@@ -31,7 +31,7 @@ public class RunItem {
     /**
      * RunUser - constructor.
      */
-    RunItem(DAO<Item, Integer> itemDAO, RunUser runUser) {
+    RunItem(ItemDAO itemDAO, RunUser runUser) {
         this.itemDAO = itemDAO;
         this.runUser = runUser;
     }
@@ -104,14 +104,11 @@ public class RunItem {
      * addComment - adds comment to item.
      * @param comment - comment.
      */
-    public void addComment(Integer id, Comment comment) {
-        Item item = this.getItemById(id);
-        System.out.println(item);
+    public void addComment(Integer itemId, Comment comment) {
+        Item item = this.getItemById(itemId);
         if (item != null) {
-            List<Comment> list = new ArrayList<>();
-            list.add(comment);
-            item.setComments(list);
-            System.out.println(item);
+            comment.setItem(item);
+            this.itemDAO.addComment(comment);
             this.updateItemById(item);
         } else {
             logger.warn("comment not added because item by id not found");
