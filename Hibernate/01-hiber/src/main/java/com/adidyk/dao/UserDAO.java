@@ -1,5 +1,6 @@
 package com.adidyk.dao;
 
+import com.adidyk.models.Passport;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -91,6 +92,21 @@ public class UserDAO implements DAO<User, Integer> {
             session.getTransaction().commit();
         }
         return list;
+    }
+
+    /**
+     *
+     * @param passport
+     */
+
+    public void setPassport(Passport passport) {
+        try(Session session = this.factory.openSession()) {
+            session.beginTransaction();
+
+            session.getTransaction().commit();
+
+        }
+
     }
 
 }

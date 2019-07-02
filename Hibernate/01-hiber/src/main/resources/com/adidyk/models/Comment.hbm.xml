@@ -10,10 +10,10 @@
         <property name="name" column="name" type="string"/>
         <property name="description" column="description" type="string"/>
         <many-to-one name="item" column="item_id"
-            class="com.adidyk.models.Item"
-            cascade="none"
-            fetch="join"
-            lazy="false"
+                     class="com.adidyk.models.Item"
+                     cascade="none"
+                     fetch="join"
+                     lazy="false"
         />
     </class>
 </hibernate-mapping>

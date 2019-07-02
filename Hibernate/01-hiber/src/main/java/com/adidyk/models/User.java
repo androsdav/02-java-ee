@@ -23,6 +23,11 @@ public class User {
     private String profession;
 
     /**
+     * @param passport - passport.
+     */
+    private Passport passport;
+
+    /**
      * User - constructor.
      */
     public User() {
@@ -95,6 +100,22 @@ public class User {
     }
 
     /**
+     * getPassport - sets passport.
+     * @return - returns passport.
+     */
+    public Passport getPassport() {
+        return passport;
+    }
+
+    /**
+     * setpassport - sets passport.
+     * @param passport - passport.
+     */
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
+    /**
      * equals - returns true or false.
      * @param obj - obj.
      * @return - returns tru or false.
@@ -102,11 +123,12 @@ public class User {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (!(obj instanceof User)) return false;
         User user = (User) obj;
-        return this.getId() == user.id &&
-                Objects.equals(this.getName(), user.name) &&
-                Objects.equals(this.getProfession(), user.profession);
+        return id == user.id &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(profession, user.profession) &&
+                Objects.equals(passport, user.passport);
     }
 
     /**
@@ -115,7 +137,7 @@ public class User {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.getName(), this.getProfession());
+        return Objects.hash(id, name, profession, passport);
     }
 
     /**
@@ -124,7 +146,12 @@ public class User {
      */
     @Override
     public String toString() {
-        return String.format("%s%s%s%s%s%s%s%s",
-                "User{", "id=", this.getId(), ", name=", this.getName(), ", profession=", this.getProfession(), "}");
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", profession='" + profession + '\'' +
+                ", passport=" + passport +
+                '}';
     }
+
 }

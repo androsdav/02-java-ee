@@ -1,11 +1,18 @@
 ------------------------------------------- create data base -------------------------------------------
 CREATE DATABASE base_hibernate_01;
-
+------------------------------------------- create table users -------------------------------------------
+CREATE TABLE passports(
+  id serial PRIMARY KEY,
+  serial VARCHAR(50) NOT NULL,
+  region VARCHAR(50) NOT NULL,
+  country VARCHAR(50) NOT NULL
+);
 ------------------------------------------- create table users -------------------------------------------
 CREATE TABLE users(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
-  profession VARCHAR(50) NOT NULL
+  profession VARCHAR(50) NOT NULL,
+  passport_id INT REFERENCES passports(id) ON DELETE SET NULL
 );
 ------------------------------------------- create table items -------------------------------------------
 CREATE TABLE items(
