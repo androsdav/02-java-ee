@@ -9,11 +9,10 @@
         </id>
         <property name="name" column="name" type="string"/>
         <property name="profession" column="profession" type="string"/>
-        <one-to-one name="passport"
-                    class="com.adidyk.models.Passport"
-                    cascade="none"
-                    fetch="join"
-                    lazy="false"
+        <many-to-one name="passport" column="passport_id"
+                     class="com.adidyk.models.Passport"
+                     cascade="all"
+                     unique="true"
         />
     </class>
 </hibernate-mapping>

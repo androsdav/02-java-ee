@@ -89,5 +89,4 @@ public class Passport {
                 ", region='" + region + '\'' +
                 '}';
     }
-
 }

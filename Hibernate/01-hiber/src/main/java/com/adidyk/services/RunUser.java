@@ -1,6 +1,7 @@
 package com.adidyk.services;
 
 import com.adidyk.dao.DAO;
+import com.adidyk.models.Passport;
 import com.adidyk.models.User;
 import org.apache.log4j.Logger;
 import java.util.ArrayList;
@@ -83,6 +84,23 @@ public class RunUser {
             logger.warn("user by id not found");
         }
         return (ArrayList<User>) list;
+    }
+
+    /**
+     * addPassport - adds passport to users.
+     */
+    public void addPassport(Integer userId, Passport passport) {
+        User user = this.getUserById(userId);
+        if (user != null) {
+            if (user.getPassport() == null) {
+                user.setPassport(passport);
+                this.updateUserById(user);
+            } else {
+                logger.warn("user already has passport");
+            }
+        } else {
+            logger.warn("passport not added to user because user by id not found");
+        }
     }
 
 }

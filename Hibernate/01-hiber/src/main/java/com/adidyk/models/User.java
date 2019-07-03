@@ -52,6 +52,18 @@ public class User {
     }
 
     /**
+     * User - constructor.
+     * @param id - user id.
+     * @param name - user name.
+     * @param profession - user profession.
+     */
+    public User(Integer id, String name, String profession) {
+        this.id = id;
+        this.name = name;
+        this.profession = profession;
+    }
+
+    /**
      * getId - returns user id.
      * @return - returns user id.
      */
