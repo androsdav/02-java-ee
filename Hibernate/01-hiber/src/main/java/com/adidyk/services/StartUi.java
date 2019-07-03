@@ -30,8 +30,32 @@ public class StartUi {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
             RunUser runUser = new RunUser(new UserDAO(factory));
 
+            // add user
+            //runUser.addUser(new User("tom", "cut"));
 
+            // update user
+            System.out.println("-------------------- user update by id --------------------");
+            User bob = new User(1);
+            bob.setProfession("killer");
+            runUser.updateUserById(bob);
+
+            // add passport
+            //System.out.println("-------------------- add passport to user --------------------");
+            //Passport passport = new Passport("111","USA","Texas");
+            //runUser.addPassport(3, passport);
+
+            // user get by id
+            System.out.println("-------------------- get user by id --------------------");
+            System.out.println(runUser.getUserById(1));
+            System.out.println(runUser.getUserById(2));
+            System.out.println(runUser.getUserById(3));
             System.out.println(runUser.getUserById(4));
+
+            // get all users
+            System.out.println("-------------------- get all user --------------------");
+            for (User user : runUser.listUser()) {
+                System.out.println(user);
+            }
 
             //runUser.addUser(new User("tom", "char"));
 

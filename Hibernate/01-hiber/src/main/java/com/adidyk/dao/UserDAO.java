@@ -45,9 +45,12 @@ public class UserDAO implements DAO<User, Integer> {
     public void update(User user) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            User oldUser = session.get(User.class, user.getId());
-            oldUser.setName(user.getName());
-            oldUser.setProfession(user.getProfession());
+            //User oldUser = session.get(User.class, user.getId());
+            //System.out.println("    new user: " + user);
+            //System.out.println("    old user: " + oldUser);
+            //oldUser.setName(user.getName());
+            //oldUser.setProfession(user.getProfession());
+            //System.out.println("    old user update: " + oldUser);
             session.update(user);
             session.getTransaction().commit();
         }

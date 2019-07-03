@@ -13,6 +13,7 @@
                      class="com.adidyk.models.Passport"
                      cascade="all"
                      unique="true"
+
         />
     </class>
 </hibernate-mapping>

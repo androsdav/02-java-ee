@@ -45,7 +45,7 @@ public class RunUser {
         try {
             this.userDAO.update(user);
         } catch (Exception ex) {
-            logger.warn("user by id not found ...");
+            ex.printStackTrace();
         }
     }
 
@@ -91,9 +91,11 @@ public class RunUser {
      */
     public void addPassport(Integer userId, Passport passport) {
         User user = this.getUserById(userId);
+        System.out.println(user);
         if (user != null) {
             if (user.getPassport() == null) {
                 user.setPassport(passport);
+                System.out.println("user.setPassport(passport)" + user);
                 this.updateUserById(user);
             } else {
                 logger.warn("user already has passport");
