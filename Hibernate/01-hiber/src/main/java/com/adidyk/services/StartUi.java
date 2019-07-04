@@ -31,31 +31,40 @@ public class StartUi {
             RunUser runUser = new RunUser(new UserDAO(factory));
 
             // add user
+            //System.out.println("-------------------- add user --------------------");
             //runUser.addUser(new User("tom", "cut"));
 
             // update user
             System.out.println("-------------------- user update by id --------------------");
-            User bob = new User(1);
-            bob.setProfession("killer");
-            runUser.updateUserById(bob);
+            User user = new User(6);
+            //user.setName("bob1");
+            //user.setProfession("tirane");
+            Passport passport = new Passport();
+            passport.setRegion("Virginia1");
+            user.setPassport(passport);
+            runUser.updateUserById(user);
 
             // add passport
             //System.out.println("-------------------- add passport to user --------------------");
             //Passport passport = new Passport("111","USA","Texas");
-            //runUser.addPassport(3, passport);
+            //runUser.addPassport(6, passport);
 
             // user get by id
-            System.out.println("-------------------- get user by id --------------------");
-            System.out.println(runUser.getUserById(1));
-            System.out.println(runUser.getUserById(2));
-            System.out.println(runUser.getUserById(3));
-            System.out.println(runUser.getUserById(4));
+            //System.out.println("-------------------- get user by id --------------------");
+            //System.out.println(runUser.getUserById(5));
+            //System.out.println(runUser.getUserById(6));
+            //System.out.println(runUser.getUserById(7));
+            //System.out.println(runUser.getUserById(8));
 
             // get all users
-            System.out.println("-------------------- get all user --------------------");
-            for (User user : runUser.listUser()) {
-                System.out.println(user);
-            }
+            //System.out.println("-------------------- get all user --------------------");
+            //for (User user : runUser.listUser()) {
+//                System.out.println(user);
+//            }
+
+
+
+
 
             //runUser.addUser(new User("tom", "char"));
 

@@ -4,6 +4,8 @@ import com.adidyk.models.Passport;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.experimental.theories.internal.ParameterizedAssertionError;
+
 import java.util.List;
 
 /**
@@ -25,6 +27,32 @@ public class UserDAO implements DAO<User, Integer> {
     }
 
     /**
+     * checkUserUpdate -check user update.
+     * @param newUser - new user.
+     * @param oldUser - old user.
+     * @return - returns user update.
+     */
+    private User checkUserUpdate(User newUser, User oldUser) {
+        if (newUser.getName() != null) oldUser.setName(newUser.getName());
+        if (newUser.getProfession() != null) oldUser.setProfession(newUser.getProfession());
+        if (newUser.getPassport() != null) oldUser.setPassport(this.checkPassportUpdate(newUser.getPassport(), oldUser.getPassport()));
+        return oldUser;
+    }
+
+    /**
+     * checkPassportUpdate - check passport update.
+     * @param newPassport - new passport.
+     * @param oldPassport - old passport.
+     * @return - returns passport update.
+     */
+    private Passport checkPassportUpdate(Passport newPassport, Passport oldPassport) {
+        if (newPassport.getSerial() != null) oldPassport.setSerial(newPassport.getSerial());
+        if (newPassport.getRegion() != null) oldPassport.setRegion(newPassport.getRegion());
+        if (newPassport.getCountry() != null) oldPassport.setCountry(newPassport.getCountry());
+        return oldPassport;
+    }
+
+    /**
      * add - adds user to table users to data base.
      * @param user - user.
      */
@@ -39,19 +67,13 @@ public class UserDAO implements DAO<User, Integer> {
 
     /**
      * update - updates user in table users in database by id.
-     * @param user - user.
+     * @param newUser - user.
      */
     @Override
-    public void update(User user) {
+    public void update(User newUser) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            //User oldUser = session.get(User.class, user.getId());
-            //System.out.println("    new user: " + user);
-            //System.out.println("    old user: " + oldUser);
-            //oldUser.setName(user.getName());
-            //oldUser.setProfession(user.getProfession());
-            //System.out.println("    old user update: " + oldUser);
-            session.update(user);
+            session.update(this.checkUserUpdate(newUser, session.get(User.class, newUser.getId())));
             session.getTransaction().commit();
         }
     }
@@ -94,7 +116,7 @@ public class UserDAO implements DAO<User, Integer> {
         List<User> list;
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            list = session.createQuery("FROM User").list();
+            list = session.createQuery("FROM User AS u ORDER BY u.id ASC").list();
             session.getTransaction().commit();
         }
         return list;
