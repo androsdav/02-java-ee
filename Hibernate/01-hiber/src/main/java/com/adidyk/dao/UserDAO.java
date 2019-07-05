@@ -35,7 +35,11 @@ public class UserDAO implements DAO<User, Integer> {
     private User checkUserUpdate(User newUser, User oldUser) {
         if (newUser.getName() != null) oldUser.setName(newUser.getName());
         if (newUser.getProfession() != null) oldUser.setProfession(newUser.getProfession());
-        if (newUser.getPassport() != null) oldUser.setPassport(this.checkPassportUpdate(newUser.getPassport(), oldUser.getPassport()));
+        if (oldUser.getPassport() == null) {
+            oldUser.setPassport(newUser.getPassport());
+        } else if (newUser.getPassport() != null) {
+            oldUser.setPassport(this.checkPassportUpdate(newUser.getPassport(), oldUser.getPassport()));
+        }
         return oldUser;
     }
 

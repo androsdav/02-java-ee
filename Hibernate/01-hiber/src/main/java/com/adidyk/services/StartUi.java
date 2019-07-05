@@ -37,17 +37,19 @@ public class StartUi {
             // update user
             System.out.println("-------------------- user update by id --------------------");
             User user = new User(6);
+            user.setName("PUTIN");
             //user.setName("bob1");
             //user.setProfession("tirane");
-            Passport passport = new Passport();
-            passport.setRegion("Virginia1");
-            user.setPassport(passport);
+            Passport passport1 = new Passport();
+            passport1.setRegion("USSR");
+            passport1.setSerial("555");
+            user.setPassport(passport1);
             runUser.updateUserById(user);
 
             // add passport
-            //System.out.println("-------------------- add passport to user --------------------");
-            //Passport passport = new Passport("111","USA","Texas");
-            //runUser.addPassport(6, passport);
+            System.out.println("-------------------- add passport to user --------------------");
+            Passport passport = new Passport("333","Ukraine","Kiev");
+            runUser.addPassport(8, passport);
 
             // user get by id
             //System.out.println("-------------------- get user by id --------------------");
