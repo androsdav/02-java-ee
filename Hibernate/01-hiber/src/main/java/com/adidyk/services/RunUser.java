@@ -91,11 +91,12 @@ public class RunUser {
      */
     public void addPassport(Integer userId, Passport passport) {
         User user = this.getUserById(userId);
-        System.out.println(user);
+        System.out.println("    get.user.id:  " + user);
         if (user != null) {
             if (user.getPassport() == null) {
+                System.out.println("    get.passport:  " + user.getPassport());
                 user.setPassport(passport);
-                System.out.println("user.setPassport(passport)" + user);
+                System.out.println("    set.passport:  " + user);
                 this.updateUserById(user);
             } else {
                 logger.warn("user already has passport");

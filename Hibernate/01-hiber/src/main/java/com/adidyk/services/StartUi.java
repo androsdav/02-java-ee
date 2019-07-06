@@ -29,84 +29,82 @@ public class StartUi {
 
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
             RunUser runUser = new RunUser(new UserDAO(factory));
+            RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
+
+
+            /*
+            User user = new User("andrey", "professor");
+            Passport passport = new Passport("444", "Georgia", "Tbilisi");
+            user.setPassport(passport);
+            runUser.addUser(user);
+            */
+
+            runUser.removeUserById(1);
 
             // add user
-            //System.out.println("-------------------- add user --------------------");
-            //runUser.addUser(new User("tom", "cut"));
+            /*
+            System.out.println("-------------------- add user --------------------");
+            runUser.addUser(new User("bil", "cut"));
+            */
 
             // update user
+            /*
             System.out.println("-------------------- user update by id --------------------");
-            User user = new User(6);
-            user.setName("PUTIN");
-            //user.setName("bob1");
-            //user.setProfession("tirane");
+            User user1 = new User(1);
+            user1.setName("bob-up1");
+            User user2 = new User(2);
+            user2.setProfession("driver-up1");
+            User user3 = new User(3);
+            user3.setName("amanda-up1");
+            user3.setProfession("designer-up1");
             Passport passport1 = new Passport();
-            passport1.setRegion("USSR");
-            passport1.setSerial("555");
-            user.setPassport(passport1);
-            runUser.updateUserById(user);
-
+            passport1.setRegion("Kiev-up1");
+            Passport passport2 = new Passport();
+            passport2.setCountry("Germany-up1");
+            Passport passport3 = new Passport();
+            passport3.setRegion("Prague-up1");
+            passport3.setCountry("Poland-up1");
+            user1.setPassport(passport1);
+            user2.setPassport(passport2);
+            user3.setPassport(passport3);
+            runUser.updateUserById(user1);
+            runUser.updateUserById(user2);
+            runUser.updateUserById(user3);
+            */
             // add passport
+            /*
             System.out.println("-------------------- add passport to user --------------------");
-            Passport passport = new Passport("333","Ukraine","Kiev");
-            runUser.addPassport(8, passport);
+            Passport passport = new Passport("111","Ukraine","Kiev");
+            Passport passport1 = new Passport("222","Germany","Berlin");
+            Passport passport2 = new Passport("333","Poland","Prague");
+            runUser.addPassport(1, passport);
+            runUser.addPassport(2, passport1);
+            runUser.addPassport(3, passport2);
+            */
 
             // user get by id
-            //System.out.println("-------------------- get user by id --------------------");
-            //System.out.println(runUser.getUserById(5));
-            //System.out.println(runUser.getUserById(6));
-            //System.out.println(runUser.getUserById(7));
-            //System.out.println(runUser.getUserById(8));
-
-            // get all users
-            //System.out.println("-------------------- get all user --------------------");
-            //for (User user : runUser.listUser()) {
-//                System.out.println(user);
-//            }
-
-
-
-
-
-            //runUser.addUser(new User("tom", "char"));
-
-            //Passport passport = new Passport("8888","Turkey", "Marmara");
-            //runUser.addPassport(4, passport);
-
-
-            //runUser.updateUserById(new User(4, "tomUpdate", "charUpdate"));
-
-
             /*
+            System.out.println("-------------------- get user by id --------------------");
+            System.out.println(runUser.getUserById(1));
+            System.out.println(runUser.getUserById(2));
+            System.out.println(runUser.getUserById(3));
+            System.out.println(runUser.getUserById(8));
+            */
+            // get all users
+            /*
+            System.out.println("-------------------- get all user --------------------");
             for (User user : runUser.listUser()) {
                 System.out.println(user);
-
-            }
-            //runUser.updateUserById(new User(1,"tomUpdate"));
-
-
-
-
-            //runUser.removeUserById(2);
-            //Passport passport = new Passport("123", "Ukraine", "North");
-            //runUser.addPassport(1, passport);
-            //runUser.updateUserById(new User(2, "adolfUpdate", "driverUpdate"));
-            //System.out.println(runUser.getUserById(1));
-            //System.out.println(runUser.getUserById(2));
-            //System.out.println(runUser.getUserById(3));
-            /*
-            RunUser runUser = new RunUser(new UserDAO(factory));
-            RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
-            System.out.println();
-            /*
-            for (Item item : runItem.listItem()) {
-                System.out.println(item);
             }
             */
+            //add item
             /*
-            Comment comment = new Comment(1, "inverse-false", "inverse-false");
-            runItem.addComment(7, comment);
+            System.out.println("-------------------- add item --------------------");
+            Item item1 = new Item("item1", "desc1");
+            Item item2 = new Item("item2", "desc2");
+            Item item3 = new Item("item3", "desc3");
             */
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

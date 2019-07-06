@@ -15,8 +15,6 @@
                      unique="true"
                      fetch="join"
                      lazy="false"
-
-
         />
     </class>
 </hibernate-mapping>

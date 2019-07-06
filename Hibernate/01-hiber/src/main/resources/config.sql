@@ -12,7 +12,7 @@ CREATE TABLE users(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   profession VARCHAR(50) NOT NULL,
-  passport_id INT REFERENCES passports(id) ON DELETE SET NULL
+  passport_id INT REFERENCES passports(id) ON DELETE CASCADE
 );
 ------------------------------------------- create table items -------------------------------------------
 CREATE TABLE items(
