@@ -17,6 +17,7 @@
 
          <modules>
                   <module>01-hiber</module>
+                  <module>02-hiber</module>
          </modules>
 
 </project>
