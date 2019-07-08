@@ -36,11 +36,13 @@ public class RunItem {
         this.runUser = runUser;
     }
 
+
+
     /**
      * addUser - adds user to table user
      * @param userId - user.
      */
-    void addItem(Item item, int userId) {
+    void addItem(int userId, Item item) {
         final User result = this.runUser.getUserById(userId);
         if (result != null) {
             item.setUser(result);
@@ -109,7 +111,6 @@ public class RunItem {
         if (item != null) {
             comment.setItem(item);
             this.itemDAO.addComment(comment);
-            this.updateItemById(item);
         } else {
             logger.warn("comment not added because item by id not found");
         }

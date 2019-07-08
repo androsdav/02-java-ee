@@ -11,11 +11,11 @@
         <property name="description" column="description" type="string"/>
         <many-to-one name="user" column="user_id"
                      class="com.adidyk.models.User"
-                     cascade="none"
+                     cascade="delete"
                      fetch="join"
                      lazy="false"
         />
-        <bag name="comments" inverse="true" cascade="save-update" lazy="false" fetch="join">
+        <bag name="comments" inverse="true" cascade="save-update, delete" lazy="false" fetch="join">
             <key column="item_id" not-null="true"/>
             <one-to-many class="com.adidyk.models.Comment"/>
         </bag>

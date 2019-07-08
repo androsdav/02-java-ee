@@ -26,7 +26,7 @@ CREATE TABLE comments(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(50) NOT NULL,
-  item_id INT REFERENCES items(id) ON DELETE CASCADE
+  item_id INT REFERENCES items(id)
 );
 ---------------------------------------------------------------------------------------------------------
 -- insert users to table users to database base_hibernate_01

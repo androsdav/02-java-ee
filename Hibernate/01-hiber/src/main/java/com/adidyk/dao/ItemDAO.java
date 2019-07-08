@@ -2,6 +2,7 @@ package com.adidyk.dao;
 
 import com.adidyk.models.Comment;
 import com.adidyk.models.Item;
+import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import java.util.List;
@@ -25,6 +26,18 @@ public class ItemDAO implements DAO<Item, Integer> {
     }
 
     /**
+     * checkUserUpdate -check user update.
+     * @param newItem - new user.
+     * @param oldItem - old user.
+     * @return - returns user update.
+     */
+    private Item checkItemUpdate(Item newItem, Item oldItem) {
+        if (newItem.getName() != null) oldItem.setName(newItem.getName());
+        if (newItem.getDescription() != null) oldItem.setDescription(newItem.getDescription());
+        return oldItem;
+    }
+
+    /**
      * add - adds user to table users to data base.
      * @param item - user.
      */
@@ -38,17 +51,14 @@ public class ItemDAO implements DAO<Item, Integer> {
     }
 
     /**
-     * update - updates user in table users in database by id.
+     * update - updates user in table users in database by id. update without comments.
      * @param newItem - user.
      */
     @Override
     public void update(Item newItem) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            Item oldItem = session.get(Item.class, newItem.getId());
-            oldItem.setName(newItem.getName());
-            oldItem.setDescription(newItem.getDescription());
-            session.update(oldItem);
+            session.update(this.checkItemUpdate(newItem, session.get(Item.class, newItem.getId())));
             session.getTransaction().commit();
         }
     }
@@ -61,7 +71,8 @@ public class ItemDAO implements DAO<Item, Integer> {
     public void remove(Item item) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            session.remove(item);
+            Item deleteItem = session.get(Item.class, item.getId());
+            session.remove(deleteItem);
             session.getTransaction().commit();
          }
     }

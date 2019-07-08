@@ -90,7 +90,8 @@ public class UserDAO implements DAO<User, Integer> {
     public void remove(User user) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            session.remove(user);
+            User deleteUser = session.get(User.class, user.getId());
+            session.remove(deleteUser);
             session.getTransaction().commit();
         }
     }

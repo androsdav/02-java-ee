@@ -11,7 +11,7 @@
         <property name="profession" column="profession" type="string"/>
         <many-to-one name="passport" column="passport_id"
                      class="com.adidyk.models.Passport"
-                     cascade="all"
+                     cascade="save-update, delete"
                      unique="true"
                      fetch="join"
                      lazy="false"

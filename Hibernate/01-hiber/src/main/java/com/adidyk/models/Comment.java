@@ -35,6 +35,16 @@ public class Comment {
 
     /**
      * Comment - constructor.
+     * @param name - comment name.
+     * @param description - comment description.
+     */
+    public Comment(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    /**
+     * Comment - constructor.
      * @param id - comment id.
      * @param name - comment name.
      * @param description - comment description.
