@@ -1,30 +1,74 @@
 package com.adidyk.models;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Class Passport.
+ */
+@Entity
+@Table(name = "passports")
 public class Passport {
 
+    /**
+     * @param id - passport id.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+    /**
+     * @param serial - passport serial.
+     */
+    @Column (name = "serial")
     private String serial;
 
+    /**
+     * @param country - passport country.
+     */
+    @Column(name = "country")
     private String country;
 
+    /**
+     * @param region - passport region.
+     */
+    @Column(name = "region")
     private String region;
 
+    /**
+     * Passport - constructor.
+     */
     public Passport() {
     }
 
+    /**
+     * Passports - constructor.
+     * @param id - passport id.
+     */
     public Passport(int id) {
         this.id = id;
     }
 
+    /**
+     * Passport - constructor.
+     * @param serial - serial passport.
+     * @param country - country passport.
+     * @param region - region passport.
+     */
     public Passport(String serial, String country, String region) {
         this.serial = serial;
         this.country = country;
         this.region = region;
     }
 
+    /**
+     * Passport - constructor.
+     * @param id - id passport.
+     * @param serial - serial passport.
+     * @param country - country passport.
+     * @param region - region passport.
+     */
     public Passport(int id, String serial, String country, String region) {
         this.id = id;
         this.serial = serial;

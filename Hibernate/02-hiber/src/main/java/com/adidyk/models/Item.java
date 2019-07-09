@@ -1,5 +1,9 @@
 package com.adidyk.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,31 +11,43 @@ import java.util.Objects;
 /**
  * Class Item.
  */
+@Entity
+@Table(name = "items")
 public class Item {
 
     /**
      * @param id - item id.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     /**
      * @param name - item name.
      */
+    @Column(name = "name")
     private String name;
 
     /**
      * @param description - description item.
      */
+    @Column(name = "description")
     private String description;
 
     /**
      * @param user - item user.
      */
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name = "user_id")
     private User user;
 
     /**
      * @param comments - list comments.
      */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     private List<Comment> comments = new ArrayList<>();
 
     /**

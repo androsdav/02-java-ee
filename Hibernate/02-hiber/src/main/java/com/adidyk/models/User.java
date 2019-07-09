@@ -1,7 +1,7 @@
 package com.adidyk.models;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -17,6 +17,7 @@ public class User {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     /**
@@ -34,8 +35,10 @@ public class User {
     /**
      * @param passport - passport.
      */
-    @Column(name="passport_id")
-    @ManyToOne(cascade = )
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name="passport_id")
     private Passport passport;
 
     /**

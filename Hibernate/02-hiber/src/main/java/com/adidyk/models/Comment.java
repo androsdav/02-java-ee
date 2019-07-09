@@ -1,30 +1,44 @@
 package com.adidyk.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
  * Class Comment.
  */
+@Entity
+@Table(name = "comments")
 public class Comment {
 
     /**
      * @param id - comment id.
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     /**
      * @param name - comment name.
      */
+    @Column(name = "name")
     private String name;
 
     /**
      * @param description - comment name.
      */
+    @Column(name = "description")
     private String description;
 
     /**
-     *
+     * @param item - item.
      */
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name = "item_id")
     private Item item;
 
     /**

@@ -11,7 +11,7 @@
         <property name="description" column="description" type="string"/>
         <many-to-one name="user" column="user_id"
                      class="com.adidyk.models.User"
-                     cascade="delete"
+                     cascade="none"
                      fetch="join"
                      lazy="false"
         />

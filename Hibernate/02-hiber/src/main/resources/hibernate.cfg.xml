@@ -11,9 +11,10 @@
         <property name="hibernate.connection.password">admin</property>
         <property name="show_sql">true</property>
 
-        <mapping resource="com/adidyk/models/User.hbm.xml"/>
-        <mapping resource="com/adidyk/models/Item.hbm.xml"/>
+        <mapping class="com.adidyk.models.User"/>
+        <mapping class="com.adidyk.models.Passport"/>
+        <mapping class="com.adidyk.models.Item"/>
         <mapping resource="com/adidyk/models/Comment.hbm.xml"/>
-        <mapping resource="com/adidyk/models/Passport.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>

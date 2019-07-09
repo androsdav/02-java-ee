@@ -41,13 +41,11 @@ public class StartUi {
             runUser.addUser(user);
             */
 
-            //runUser.removeUserById(5);
+            runUser.removeUserById(5);
 
             // add user
-            /*
             System.out.println("-------------------- add user --------------------");
-            runUser.addUser(new User("bil", "cut"));
-            */
+            //runUser.addUser(new User("bil", "cut"));
 
             // update user
             /*
@@ -144,6 +142,7 @@ public class StartUi {
 
 
             // get item by id
+            /*
             System.out.println("-------------------- get item by id --------------------");
             System.out.println(runItem.getItemById(1));
 
@@ -152,6 +151,7 @@ public class StartUi {
             for (Item item : runItem.listItem()) {
                 System.out.println(item);
             }
+            */
 
 
         } catch (Exception ex) {
