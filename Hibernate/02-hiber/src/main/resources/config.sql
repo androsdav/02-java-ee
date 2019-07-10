@@ -1,6 +1,6 @@
 ------------------------------------------- create data base -------------------------------------------
 CREATE DATABASE base_hibernate_01;
-------------------------------------------- create table users -------------------------------------------
+------------------------------------------- create table passport -------------------------------------------
 CREATE TABLE passports(
   id serial PRIMARY KEY,
   serial VARCHAR(50) NOT NULL,
@@ -26,7 +26,8 @@ CREATE TABLE comments(
   id serial PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description VARCHAR(50) NOT NULL,
-  item_id INT REFERENCES items(id)
+  item_id INT,
+  FOREIGN KEY(item_id) REFERENCES items(id)
 );
 ---------------------------------------------------------------------------------------------------------
 -- insert users to table users to database base_hibernate_01

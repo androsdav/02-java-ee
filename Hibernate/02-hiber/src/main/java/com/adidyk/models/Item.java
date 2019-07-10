@@ -2,7 +2,6 @@ package com.adidyk.models;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public class Item {
     /**
      * @param comments - list comments.
      */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "item")
     @Fetch(FetchMode.JOIN)
     private List<Comment> comments = new ArrayList<>();
 

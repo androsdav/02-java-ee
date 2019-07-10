@@ -98,32 +98,38 @@ public class StartUi {
 
             //add item
             System.out.println("-------------------- add item --------------------");
-            //Item item1 = new Item("item1", "desc1");
-            //Item item2 = new Item("item2", "desc2");
-            //Item item3 = new Item("item3", "desc3");
-            //runItem.addItem(1, item1);
-            //runItem.addItem(1, item3);
+            /*
+            Item item1 = new Item("item1", "desc1");
+            Item item2 = new Item("item2", "desc2");
+            Item item3 = new Item("item3", "desc3");
+            runItem.addItem(2, item1);
+            //runItem.addItem(1, item2);
+            runItem.addItem(2, item3);
+            */
 
             // update item
-            //System.out.println("-------------------- update item --------------------");
-            //Item item1 = new Item(1);
-            //item1.setName("item1-up1");
-            //item1.setUser(new User("test", "test"));
-            //runItem.updateItemById(item1);
+            /*
+            System.out.println("-------------------- update item --------------------");
+            Item item1 = new Item(1);
+            item1.setName("item1-up1");
+            item1.setUser(new User("test", "test"));
+            runItem.updateItemById(item1);
+            */
 
             System.out.println("-------------------- delete item --------------------");
-            //runItem.removeItemById(1);
+            runItem.removeItemById(1);
 
             // add comments to item
-            //System.out.println("-------------------- add comments to item --------------------");
-            //Comment comment1 = new Comment("com-to-item-3", "com1");
-            //Comment comment2 = new Comment("com-to-item-3", "com2");
-            //runItem.addComment(1, comment1);
-            //runItem.addComment(1, comment2);
-            //Comment comment3 = new Comment("com-to-item-2", "com3");
-            //runItem.addComment(2, comment3);
-            //Comment comment4 = new Comment("com-to-item-1", "com4");
-            //runItem.addComment(1, comment4);
+            System.out.println("-------------------- add comments to item --------------------");
+            /*
+            Comment comment1 = new Comment("com-to-item-3", "com1");
+            Comment comment2 = new Comment("com-to-item-3", "com2");
+            runItem.addComment(1, comment1);
+            runItem.addComment(1, comment2);
+            Comment comment3 = new Comment("com-to-item-2", "com3");
+            runItem.addComment(2, comment3);
+            Comment comment4 = new Comment("com-to-item-1", "com4");
+            runItem.addComment(1, comment4);
 
             // add item + sets comments
             System.out.println("-------------------- add item + sets comment --------------------");

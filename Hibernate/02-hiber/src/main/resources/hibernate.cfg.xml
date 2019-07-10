@@ -14,7 +14,7 @@
         <mapping class="com.adidyk.models.User"/>
         <mapping class="com.adidyk.models.Passport"/>
         <mapping class="com.adidyk.models.Item"/>
-        <mapping resource="com/adidyk/models/Comment.hbm.xml"/>
+        <mapping class="com.adidyk.models.Comment"/>
 
     </session-factory>
 </hibernate-configuration>
