@@ -3,6 +3,8 @@ package com.adidyk.models;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -40,6 +42,14 @@ public class User {
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name="passport_id")
     private Passport passport;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(name = "users_projects",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = { @JoinColumn(name = "project_id")}
+    )
+    private List<Project> projects = new ArrayList<>();
 
     /**
      * User - constructor.
@@ -134,11 +144,27 @@ public class User {
     }
 
     /**
-     * setpassport - sets passport.
+     * setPassport - sets passport.
      * @param passport - passport.
      */
     public void setPassport(Passport passport) {
         this.passport = passport;
+    }
+
+    /**
+     * getProjects - returns all projects.
+     * @return - returns all porjects.
+     */
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    /**
+     * setProject - sets project.
+     * @param projects - list project.
+     */
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     /**
@@ -154,7 +180,8 @@ public class User {
         return id == user.id &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(profession, user.profession) &&
-                Objects.equals(passport, user.passport);
+                Objects.equals(passport, user.passport) &&
+                Objects.equals(projects, user.projects);
     }
 
     /**
@@ -163,7 +190,7 @@ public class User {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, profession, passport);
+        return Objects.hash(id, name, profession, passport, projects);
     }
 
     /**
@@ -177,6 +204,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", profession='" + profession + '\'' +
                 ", passport=" + passport +
+                ", projects=" + projects +
                 '}';
     }
 

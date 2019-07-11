@@ -1,5 +1,11 @@
 ------------------------------------------- create data base -------------------------------------------
 CREATE DATABASE base_hibernate_01;
+
+------------------------------------------- create table project -------------------------------------------
+CREATE TABLE projects(
+  id serial PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
 ------------------------------------------- create table passport -------------------------------------------
 CREATE TABLE passports(
   id serial PRIMARY KEY,
@@ -13,6 +19,13 @@ CREATE TABLE users(
   name VARCHAR(50) NOT NULL,
   profession VARCHAR(50) NOT NULL,
   passport_id INT REFERENCES passports(id)
+);
+------------------------------------------- create table user_project -------------------------------------------
+CREATE TABLE users_projects(
+  user_id INT,
+  project_id INT,
+  CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
+  CONSTRAINT fk_project FOREIGN KEY(project_id) REFERENCES projects(id)
 );
 ------------------------------------------- create table items -------------------------------------------
 CREATE TABLE items(
@@ -34,6 +47,12 @@ CREATE TABLE comments(
 INSERT INTO users(name, profession) VALUES('bob', 'doctor');
 INSERT INTO users(name, profession) VALUES('adolf', 'driver');
 INSERT INTO users(name, profession) VALUES('amanda', 'designer');
+
+-- insert project to table projects to database base_hibernate_01
+INSERT INTO projects(name) VALUES ('jdbc');
+INSERT INTO projects(name) VALUES ('hibernate');
+INSERT INTO projects(name) VALUES ('spring');
+INSERT INTO projects(name) VALUES ('REST');
 
 -- insert item to table items to database base_hibernate_01
 INSERT INTO items(name, description, user_id) VALUES('work','search work',1);

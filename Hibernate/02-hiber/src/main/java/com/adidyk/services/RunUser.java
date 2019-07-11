@@ -2,6 +2,7 @@ package com.adidyk.services;
 
 import com.adidyk.dao.DAO;
 import com.adidyk.models.Passport;
+import com.adidyk.models.Project;
 import com.adidyk.models.User;
 import org.apache.log4j.Logger;
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class RunUser {
      */
     private DAO<User, Integer> userDAO;
 
+    private DAO<Project, Integer> projectDAO;
+
     /**
      * @param logger - logger (link variable to object of class Logger).
      */
@@ -25,8 +28,9 @@ public class RunUser {
     /**
      * RunUser - constructor.
      */
-    RunUser(DAO<User, Integer> userDAO) {
+    RunUser(DAO<User, Integer> userDAO, DAO<Project, Integer> projectDAO) {
         this.userDAO = userDAO;
+        this.projectDAO = projectDAO;
     }
 
     /**
@@ -87,7 +91,7 @@ public class RunUser {
     }
 
     /**
-     * addPassport - adds passport to users.
+     * addPassport - adds passport to user.
      */
     public void addPassport(Integer userId, Passport passport) {
         User user = this.getUserById(userId);
@@ -104,6 +108,19 @@ public class RunUser {
         } else {
             logger.warn("passport not added to user because user by id not found");
         }
+    }
+
+    /**
+     * addProject - adds project to user (project is created and is data base).
+     */
+    public void addProject(Integer userId, Integer projectId) {
+        User user = this.getUserById(userId);
+        if (user != null) {
+
+        } else {
+            logger.warn("user by id not found");
+        }
+
     }
 
 }

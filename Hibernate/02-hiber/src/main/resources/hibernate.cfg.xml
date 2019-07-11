@@ -15,6 +15,6 @@
         <mapping class="com.adidyk.models.Passport"/>
         <mapping class="com.adidyk.models.Item"/>
         <mapping class="com.adidyk.models.Comment"/>
-
+        <mapping class="com.adidyk.models.Project"/>
     </session-factory>
 </hibernate-configuration>
