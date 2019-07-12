@@ -1,9 +1,12 @@
 package com.adidyk.dao;
 
 import com.adidyk.models.Passport;
+import com.adidyk.models.Project;
 import com.adidyk.models.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -123,6 +126,25 @@ public class UserDAO implements DAO<User, Integer> {
             session.getTransaction().commit();
         }
         return list;
+    }
+
+    /**
+     * addProjectToUser - adds project to user.
+     * @param user - user.
+     * @param project - project.
+     */
+    public void addProjectToUser(User user, Project project) {
+        try (Session session = this.factory.openSession()) {
+            session.beginTransaction();
+            session.persist(user);
+            User getuser = this.get(user.getId());
+            ArrayList<Project> list = new ArrayList<>();
+            list.add(project);
+
+            session.getTransaction().commit();
+
+        }
+
     }
 
 }

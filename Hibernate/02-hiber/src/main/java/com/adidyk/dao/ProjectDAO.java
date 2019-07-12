@@ -66,17 +66,27 @@ public class ProjectDAO implements DAO<Project, Integer> {
      */
     @Override
     public void remove(Project project) {
-
+        try (Session session = this.factory.openSession()) {
+            session.beginTransaction();
+            session.remove(project);
+            session.getTransaction().commit();
+        }
     }
 
     /**
      * get - gets entity from database by key.
-     * @param integer - generic key.
+     * @param id - generic key.
      * @return - returns entity from database by key.
      */
     @Override
-    public Project get(Integer integer) {
-        return null;
+    public Project get(Integer id) {
+        Project project;
+        try (Session session = this.factory.openSession()) {
+            session.beginTransaction();
+            project = session.get(Project.class, id);
+            session.getTransaction().commit();
+        }
+        return project;
     }
 
     /**
@@ -86,7 +96,13 @@ public class ProjectDAO implements DAO<Project, Integer> {
      */
     @Override
     public List<Project> getList() {
-        return null;
+        List<Project> list;
+        try (Session session = this.factory.openSession()) {
+            session.beginTransaction();
+            list = session.createQuery("from Project AS p ORDER BY p.id DESC").list();
+            session.getTransaction().commit();
+        }
+        return list;
     }
 
 }

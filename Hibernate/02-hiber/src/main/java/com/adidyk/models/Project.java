@@ -1,5 +1,8 @@
 package com.adidyk.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,8 +110,7 @@ public class Project {
     public String toString() {
         return "Project{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", users=" + users +
+                ", name='" + name +
                 '}';
     }
 

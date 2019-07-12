@@ -1,11 +1,9 @@
 package com.adidyk.services;
 
 import com.adidyk.dao.ItemDAO;
+import com.adidyk.dao.ProjectDAO;
 import com.adidyk.dao.UserDAO;
-import com.adidyk.models.Comment;
-import com.adidyk.models.Item;
-import com.adidyk.models.Passport;
-import com.adidyk.models.User;
+import com.adidyk.models.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -30,8 +28,52 @@ public class StartUi {
     public static void main(String[] arg) {
 
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory()) {
-            RunUser runUser = new RunUser(new UserDAO(factory));
-            RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
+            ProjectDAO projectDAO = new ProjectDAO(factory);
+            //--------------------------------------------- Project ---------------------------------------------
+            /*
+            System.out.println("    add project");
+            Project project = new Project("tracker");
+            projectDAO.add(project);
+            */
+            /*
+            System.out.println("    update project");
+            Project project1 = new Project(1);
+            project1.setName("jdbc-up");
+            projectDAO.update(project1);
+            */
+            /*
+            System.out.println("    remove project");
+            Project project2 = new Project(5);
+            projectDAO.remove(project2);
+            */
+            /*
+            System.out.println("    get project by id");
+            */
+            /*
+            Project project3 = projectDAO.get(4);
+            System.out.println(project3);
+            System.out.println("    get all project");
+            for (Project project : projectDAO.getList()) {
+                System.out.println(project);
+            }
+            */
+            /*
+            Project project4 = new Project("farrell");
+            User andros = new User("andros", "ultrasound");
+            User svistun = new User("svistun", "super-ultrasound");
+            ArrayList<User> users = new ArrayList<>();
+            users.add(andros);
+            users.add(svistun);
+            project4.setUsers(users);
+            projectDAO.add(project4);
+            */
+
+
+            //--------------------------------------------------------------------------------------------------
+
+
+            RunUser runUser = new RunUser(new UserDAO(factory), projectDAO);
+            //RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
 
             // add user + passport
             /*
@@ -41,11 +83,21 @@ public class StartUi {
             runUser.addUser(user);
             */
 
-            runUser.removeUserById(5);
+//            runUser.removeUserById(5);
 
             // add user
+            /*
             System.out.println("-------------------- add user --------------------");
-            //runUser.addUser(new User("bil", "cut"));
+            User anton = new User("anton", "vt");
+            Project project1 = new Project("project1");
+            Project project2 = new Project("project2");
+            ArrayList<Project> projects = new ArrayList<>();
+            projects.add(project1);
+            projects.add(project2);
+            anton.setProjects(projects);
+            runUser.addUser(anton);
+
+            //runUser.addUser(new User("anton", "vt"));
 
             // update user
             /*
@@ -97,7 +149,7 @@ public class StartUi {
             */
 
             //add item
-            System.out.println("-------------------- add item --------------------");
+            //System.out.println("-------------------- add item --------------------");
             /*
             Item item1 = new Item("item1", "desc1");
             Item item2 = new Item("item2", "desc2");
@@ -116,11 +168,11 @@ public class StartUi {
             runItem.updateItemById(item1);
             */
 
-            System.out.println("-------------------- delete item --------------------");
-            runItem.removeItemById(1);
+            //System.out.println("-------------------- delete item --------------------");
+            //runItem.removeItemById(1);
 
             // add comments to item
-            System.out.println("-------------------- add comments to item --------------------");
+            //System.out.println("-------------------- add comments to item --------------------");
             /*
             Comment comment1 = new Comment("com-to-item-3", "com1");
             Comment comment2 = new Comment("com-to-item-3", "com2");

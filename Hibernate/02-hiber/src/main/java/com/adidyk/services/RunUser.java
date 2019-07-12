@@ -1,6 +1,8 @@
 package com.adidyk.services;
 
 import com.adidyk.dao.DAO;
+import com.adidyk.dao.ProjectDAO;
+import com.adidyk.dao.UserDAO;
 import com.adidyk.models.Passport;
 import com.adidyk.models.Project;
 import com.adidyk.models.User;
@@ -16,9 +18,9 @@ public class RunUser {
     /**
      * @param daoUser - daoUser.
      */
-    private DAO<User, Integer> userDAO;
+    private UserDAO userDAO;
 
-    private DAO<Project, Integer> projectDAO;
+    private ProjectDAO projectDAO;
 
     /**
      * @param logger - logger (link variable to object of class Logger).
@@ -28,7 +30,7 @@ public class RunUser {
     /**
      * RunUser - constructor.
      */
-    RunUser(DAO<User, Integer> userDAO, DAO<Project, Integer> projectDAO) {
+    RunUser(UserDAO userDAO, ProjectDAO projectDAO) {
         this.userDAO = userDAO;
         this.projectDAO = projectDAO;
     }
@@ -116,7 +118,12 @@ public class RunUser {
     public void addProject(Integer userId, Integer projectId) {
         User user = this.getUserById(userId);
         if (user != null) {
-
+            Project project = this.projectDAO.get(projectId);
+            if (project != null) {
+                this.userDAO.addProjectToUser(user, project);
+            } else {
+                logger.warn("project by id not found");
+            }
         } else {
             logger.warn("user by id not found");
         }

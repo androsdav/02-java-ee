@@ -43,12 +43,13 @@ public class User {
     @JoinColumn(name="passport_id")
     private Passport passport;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Fetch(FetchMode.JOIN)
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "users_projects",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = { @JoinColumn(name = "project_id")}
     )
+
     private List<Project> projects = new ArrayList<>();
 
     /**
@@ -155,14 +156,17 @@ public class User {
      * getProjects - returns all projects.
      * @return - returns all porjects.
      */
+    /*
     public List<Project> getProjects() {
         return projects;
     }
+    */
 
     /**
      * setProject - sets project.
      * @param projects - list project.
      */
+
     public void setProjects(List<Project> projects) {
         this.projects = projects;
     }
@@ -190,6 +194,7 @@ public class User {
      */
     @Override
     public int hashCode() {
+        //return Objects.hash(id, name, profession, passport);
         return Objects.hash(id, name, profession, passport, projects);
     }
 
