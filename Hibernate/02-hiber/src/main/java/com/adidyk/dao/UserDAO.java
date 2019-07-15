@@ -136,15 +136,32 @@ public class UserDAO implements DAO<User, Integer> {
     public void addProjectToUser(User user, Project project) {
         try (Session session = this.factory.openSession()) {
             session.beginTransaction();
-            session.persist(user);
-            User getuser = this.get(user.getId());
+            User getUser = this.get(user.getId());
+            Project getProject = session.get(Project.class, project.getId());
             ArrayList<Project> list = new ArrayList<>();
-            list.add(project);
-
+            list.add(getProject);
+            getUser.setProjects(list);
+            session.update(getUser);
             session.getTransaction().commit();
 
         }
+    }
 
+    /**
+     * getProject - returns all project for user.
+     * @param userId - user id.
+     * @return -returns all project for user.
+     */
+    public List<Project> getProject (Integer userId) {
+        List<Project> list;
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            list = session.get(User.class, userId).getProjects();
+            //System.out.println(list);
+            session.getTransaction().commit();
+        }
+        //System.out.println(list);
+        return list;
     }
 
 }

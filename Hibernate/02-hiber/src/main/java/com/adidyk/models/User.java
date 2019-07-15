@@ -156,11 +156,9 @@ public class User {
      * getProjects - returns all projects.
      * @return - returns all porjects.
      */
-    /*
     public List<Project> getProjects() {
         return projects;
     }
-    */
 
     /**
      * setProject - sets project.

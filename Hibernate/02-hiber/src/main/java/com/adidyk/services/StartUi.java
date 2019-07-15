@@ -73,6 +73,11 @@ public class StartUi {
 
 
             RunUser runUser = new RunUser(new UserDAO(factory), projectDAO);
+            System.out.println(runUser.listProject(7));
+            //User user = new User(1);
+            //Project project = new Project(3);
+            //runUser.addProject(1, 3);
+
             //RunItem runItem = new RunItem(new ItemDAO(factory), runUser);
 
             // add user + passport

@@ -127,7 +127,16 @@ public class RunUser {
         } else {
             logger.warn("user by id not found");
         }
+    }
 
+    /**
+     * listProject - list project for user.
+     * @param userId - user id.
+     * @return - returns list project for user.
+     */
+    public List<Project> listProject(Integer userId) {
+        List<Project> list = this.userDAO.getProject(userId);
+        return list;
     }
 
 }
