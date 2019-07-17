@@ -13,6 +13,7 @@
                   <module>01-Servlets</module>
                   <module>Hibernate</module>
                   <module>Spring</module>
+                  <module>RESTful</module>
          </modules>
 
 </project>

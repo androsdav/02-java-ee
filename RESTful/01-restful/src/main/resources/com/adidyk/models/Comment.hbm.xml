@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.adidyk.models.Comment" table="comments">
+        <id name="id" column="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="description" column="description" type="string"/>
+        <many-to-one name="item" column="item_id"
+                     class="com.adidyk.models.Item"
+                     cascade="none"
+                     fetch="join"
+                     lazy="false"
+        />
+    </class>
+</hibernate-mapping>
