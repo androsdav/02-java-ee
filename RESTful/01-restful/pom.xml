@@ -6,6 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.adidyk.RESTful.01-restful</groupId>
     <artifactId>01-restful</artifactId>
+    <packaging>war</packaging>
     <version>1.0</version>
 
     <parent>
@@ -60,18 +61,15 @@
     </dependencies>
 
     <build>
-        <finalName>HelloRESTful</finalName>
+        <finalName>01-restful</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <path>/HelloRESTful</path>
-                    <port>8080</port>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
