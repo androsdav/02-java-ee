@@ -17,6 +17,7 @@
 
          <modules>
                   <module>01-restful</module>
+                  <module>02-restful-crud</module>
          </modules>
 
 </project>
