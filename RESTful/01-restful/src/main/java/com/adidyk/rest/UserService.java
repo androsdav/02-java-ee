@@ -1,12 +1,11 @@
 package com.adidyk.rest;
 
 import com.adidyk.models.User;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Class UserService.
@@ -66,24 +65,14 @@ public class UserService {
     }
 
     /**
-
-     * getUserParam - gets user inputted params.
-     * @param id - user id.
-     * @param firstName - user first name.
-     * @param lastName - user last name.
-     * @param age - user age.
-     * @return - returns user inputted params.
+     *
      */
-    /*
-    @Path("/get_user_xml/{id}/{firstName}/{lastName}/{age}")
+    @Path("/query")
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public User getUserQueryParam(@PathParam("id")int id,
-                             @PathParam("firstName")String firstName,
-                             @PathParam("lastName")String lastName,
-                             @PathParam("age")int age) {
-        return new User(id, firstName, lastName, age);
+    public Response getQueryParameters(@QueryParam("parameter1")String parameter1,
+                                       @QueryParam("parameter2")String parameter2) {
+        String output = "Parameter1 :" + parameter1 + " Parameter2 : " + parameter2;
+        return Response.status(200).entity(output).build();
     }
-    */
 
 }
