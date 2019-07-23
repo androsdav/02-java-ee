@@ -22,14 +22,12 @@ public class UserService {
     private final Validate logic = ValidateService.getInstance();
 
 
-    /*
     /**
      * addUser - adds user to memory store.
      * @param firstName - user first name.
      * @param lastName - user last name.
      * @param age - user age.
      */
-    /*
     @GET
     @Path("/add/{firstName}/{lastName}/{age}")
     public String addUser(@PathParam("firstName")String firstName,
@@ -39,7 +37,6 @@ public class UserService {
         this.logic.add(user);
         return "add is good";
     }
-    */
 
     /**
      * addUser - adds user to memory store.
@@ -49,6 +46,7 @@ public class UserService {
     @Produces({MediaType.APPLICATION_XML})
     @Consumes(MediaType.APPLICATION_XML)
     public String addUser(User user) {
+        System.out.println(user);
         this.logic.add(user);
         return "post";
     }
