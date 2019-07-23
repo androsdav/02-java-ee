@@ -75,7 +75,13 @@ public class ValidateService implements Validate {
      */
     @Override
     public User findById(String id) {
-        return this.store.findById(id);
+        User user = null;
+        try {
+            user = this.store.findById(id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return user;
     }
 
     /**

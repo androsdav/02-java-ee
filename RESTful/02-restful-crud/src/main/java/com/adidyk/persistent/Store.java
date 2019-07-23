@@ -1,7 +1,6 @@
 package com.adidyk.persistent;
 
 import com.adidyk.models.User;
-
 import java.util.List;
 
 /**
