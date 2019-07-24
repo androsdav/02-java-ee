@@ -77,6 +77,3 @@ public class UserService {
     }
 
 }
-
-//https://memorynotfound.com/jax-ws-soap-web-service-example/
-//http://java-online.ru/web-service-soap-client.xhtml

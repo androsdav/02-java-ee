@@ -1,7 +1,6 @@
 package com.adidyk.persistent;
 
 import com.adidyk.models.User;
-
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
