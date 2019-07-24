@@ -14,6 +14,7 @@
                   <module>Hibernate</module>
                   <module>Spring</module>
                   <module>RESTful</module>
+                  <module>SOAP</module>
          </modules>
 
 </project>
