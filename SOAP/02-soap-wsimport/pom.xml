@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
          <modelVersion>4.0.0</modelVersion>
-         <groupId>com.adidyk.SOAP</groupId>
-         <artifactId>SOAP</artifactId>
+         <groupId>com.adidyk.SOAP.02-soap-wsimport</groupId>
+         <artifactId>02-soap-wsimport</artifactId>
          <version>1.0</version>
          <packaging>pom</packaging>
 
@@ -16,8 +16,8 @@
          </properties>
 
          <modules>
-                  <module>01-soap</module>
-                  <module>02-soap-wsimport</module>
+                  <module>client</module>
+                  <module>server</module>
          </modules>
 
 </project>

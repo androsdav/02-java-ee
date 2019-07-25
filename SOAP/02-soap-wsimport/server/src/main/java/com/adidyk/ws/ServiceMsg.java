@@ -9,7 +9,7 @@ import javax.jws.soap.SOAPBinding;
  */
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
-public interface Service {
+public interface ServiceMsg {
 
     /**
      * getMsg - returns message.

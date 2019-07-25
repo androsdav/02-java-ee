@@ -5,8 +5,8 @@ import javax.jws.WebService;
 /**
  * Class ServiceImpl.
  */
-@WebService(endpointInterface = "com.adidyk.ws.Service")
-public class ServiceImpl implements Service {
+@WebService(endpointInterface = "com.adidyk.ws.ServiceMsg")
+public class ServiceMsgImpl implements ServiceMsg {
 
     /**
      * getMsg - returns message.

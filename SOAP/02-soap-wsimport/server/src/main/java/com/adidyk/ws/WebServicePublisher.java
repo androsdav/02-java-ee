@@ -12,7 +12,7 @@ public class WebServicePublisher {
      * @param arg - arg.
      */
     public static void main(String[]arg) {
-        Endpoint.publish("http://localhost:1986/ws/service", new ServiceMsgImpl());
+        Endpoint.publish("http://localhost:1987/ws/user", new UserServiceImpl());
     }
 
 }

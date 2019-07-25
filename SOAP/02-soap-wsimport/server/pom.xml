@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.adidyk.SOAP.01-soap.client</groupId>
-    <artifactId>client</artifactId>
+    <groupId>com.adidyk.SOAP.02-soap-wsimport.server</groupId>
+    <artifactId>server</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
 
     <parent>
-        <groupId>com.adidyk.SOAP.01-soap</groupId>
-        <artifactId>01-soap</artifactId>
+        <groupId>com.adidyk.SOAP.02-soap-wsimport</groupId>
+        <artifactId>02-soap-wsimport</artifactId>
         <version>1.0</version>
     </parent>
 
@@ -38,7 +38,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.adidyk.client.WebServiceClient</mainClass>
+                                    <mainClass>com.adidyk.ws.WebServicePublisher</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
