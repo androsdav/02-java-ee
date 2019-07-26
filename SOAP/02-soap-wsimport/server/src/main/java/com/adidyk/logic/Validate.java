@@ -1,6 +1,8 @@
 package com.adidyk.logic;
 
 import com.adidyk.models.User;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,6 +43,6 @@ public interface Validate {
      * findAll - returns all user from container.
      * @return - returns all user.
      */
-    List<User> findAll();
+    ArrayList<User> findAll();
 
 }

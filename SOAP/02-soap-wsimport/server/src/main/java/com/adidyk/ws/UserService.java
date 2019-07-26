@@ -1,10 +1,16 @@
 package com.adidyk.ws;
 
 import com.adidyk.models.User;
+import com.adidyk.persistent.MemoryStore;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * UserService - interface.
@@ -47,15 +53,12 @@ public interface UserService {
     @WebMethod
     User findById(String id);
 
-    /*
     /**
      * findAll - returns all user from container.
      * @return - returns all user.
      */
-    /*
-    @WebMethod
-    List<User> findAll();
-    */
+    @WebMethod(operationName = "findAll")
+    ArrayList<User> findAll();
 
     /**
      * test - test method.

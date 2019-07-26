@@ -3,6 +3,8 @@ package com.adidyk.logic;
 import com.adidyk.models.User;
 import com.adidyk.persistent.MemoryStore;
 import com.adidyk.persistent.Store;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -89,7 +91,7 @@ public class ValidateService implements Validate {
      * @return - returns all user.
      */
     @Override
-    public List<User> findAll() {
+    public ArrayList<User> findAll() {
         return this.store.findAll();
     }
 

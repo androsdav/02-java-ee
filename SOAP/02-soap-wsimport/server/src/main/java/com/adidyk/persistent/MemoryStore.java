@@ -1,8 +1,10 @@
 package com.adidyk.persistent;
 
 import com.adidyk.models.User;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 /**
@@ -11,6 +13,8 @@ import java.util.stream.IntStream;
  * @since 27.01.2019.
  * @version 1.0.
  */
+@XmlRootElement(name = "response")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class MemoryStore implements Store {
 
     /**
@@ -21,7 +25,9 @@ public class MemoryStore implements Store {
     /**
      * @param users - container for users (link variable to object of class ArrayList).
      */
-    private List<User> users = new CopyOnWriteArrayList<>();
+    @XmlElementWrapper(name = "users")
+    @XmlElement(name = "user")
+    private ArrayList<User> users = new ArrayList<>();
 
     /**
      * @param id - user id.
@@ -91,7 +97,7 @@ public class MemoryStore implements Store {
      * findAll - returns all user from container.
      * @return - returns all user.
      */
-    public List<User> findAll() {
+    public ArrayList<User> findAll() {
         return this.users;
     }
 
@@ -101,6 +107,47 @@ public class MemoryStore implements Store {
      */
     private String generateId() {
         return String.valueOf(this.id++);
+    }
+
+    /**
+     * getUsers - returns list users.
+     * @return - returns list users.
+     */
+    @XmlElementWrapper(name = "users")
+    @XmlElement(name = "user")
+    public ArrayList<User> getUsers() {
+        return this.users;
+    }
+
+    /**
+     * setUsers - sets list users.
+     * @param users  sets list users.
+     */
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
+    }
+
+    /**
+     * equals - returns true or false.
+     * @param o - object.
+     * @return - returns true or false.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MemoryStore)) return false;
+        MemoryStore that = (MemoryStore) o;
+        return id == that.id &&
+                Objects.equals(users, that.users);
+    }
+
+    /**
+     * hashCode - returns hash code.
+     * @return - returns hash code.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(users, id);
     }
 
 }
