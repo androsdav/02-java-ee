@@ -3,19 +3,13 @@ package com.adidyk.ws;
 import com.adidyk.logic.Validate;
 import com.adidyk.logic.ValidateService;
 import com.adidyk.models.User;
-import com.adidyk.persistent.MemoryStore;
-
 import javax.jws.WebService;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Class UserService.
  */
 @WebService(endpointInterface = "com.adidyk.ws.UserService")
-@XmlSeeAlso(MemoryStore.class)
 public class UserServiceImpl implements UserService {
 
     /**
@@ -34,6 +28,25 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * update - updates user by id in container.
+     * @param user - user (link variable to object of class User).
+     */
+    @Override
+    public void update(User user) {
+        this.logic.update(user);
+    }
+
+    /**
+     * delete - deletes user by id from container.
+     * @param id - user id.
+     * @return - returns id.
+     */
+    @Override
+    public String delete(String id) {
+        return this.logic.delete(id);
+    }
+
+    /**
      * findById - finds user by id in container.
      * @param id - user id.
      * @return - returns user id.
@@ -47,10 +60,12 @@ public class UserServiceImpl implements UserService {
      * findAll - returns all user from container.
      * @return - returns all user.
      */
-    public ArrayList<User> findAll() {
+    @Override
+    public User[] findAll() {
         ArrayList<User> list = this.logic.findAll();
+        User[] item = list.toArray(new User[list.size()]);
         System.out.println(list);
-        return list;
+        return item;
     }
 
     /**

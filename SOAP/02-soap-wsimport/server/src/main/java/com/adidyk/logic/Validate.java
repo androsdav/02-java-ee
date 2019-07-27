@@ -1,9 +1,7 @@
 package com.adidyk.logic;
 
 import com.adidyk.models.User;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Interface Validate defines next method for container of users: add, update, delete, findById, findAll.

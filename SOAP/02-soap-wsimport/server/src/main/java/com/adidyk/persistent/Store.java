@@ -1,9 +1,7 @@
 package com.adidyk.persistent;
 
 import com.adidyk.models.User;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Interface Store defines next method for container of users: add, update, delete, findById, findAll.

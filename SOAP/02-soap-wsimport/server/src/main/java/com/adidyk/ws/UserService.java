@@ -26,12 +26,10 @@ public interface UserService {
     @WebMethod
     User add(User user);
 
-    /*
     /**
      * update - updates user by id in container.
      * @param user - user (link variable to object of class User).
      */
-    /*
     @WebMethod
     void update(User user);
 
@@ -40,10 +38,8 @@ public interface UserService {
      * @param id - user id.
      * @return - returns id.
      */
-    /*
     @WebMethod
     String delete(String id);
-    */
 
     /**
      * findById - finds user by id in container.
@@ -58,7 +54,7 @@ public interface UserService {
      * @return - returns all user.
      */
     @WebMethod(operationName = "findAll")
-    ArrayList<User> findAll();
+    User[] findAll();
 
     /**
      * test - test method.

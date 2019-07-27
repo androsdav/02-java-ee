@@ -3,9 +3,7 @@ package com.adidyk.logic;
 import com.adidyk.models.User;
 import com.adidyk.persistent.MemoryStore;
 import com.adidyk.persistent.Store;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Class ValidateService consists next method for container of users: add, update, delete, findById, findAll.
