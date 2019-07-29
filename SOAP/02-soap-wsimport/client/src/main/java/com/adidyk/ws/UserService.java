@@ -1,11 +1,9 @@
 package com.adidyk.ws;
 
 import com.adidyk.models.User;
-
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
-import java.util.ArrayList;
 
 /**
  * UserService - interface.
