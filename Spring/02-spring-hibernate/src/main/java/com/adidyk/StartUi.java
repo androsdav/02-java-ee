@@ -1,5 +1,10 @@
 package com.adidyk;
 
+import com.adidyk.models.User;
+import com.adidyk.models.UserStore;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * Class StartUi.
  */
@@ -10,7 +15,9 @@ public class StartUi {
      * @param arg - arg.
      */
     public static void main(String[] arg) {
-        System.out.println("test tset");
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+        UserStore userStore = context.getBean(UserStore.class);
+        userStore.save(new User("amanda", "doctor"));
         // https://dzone.com/tutorials/java/spring/spring-hibernate-integration-1.html
 
     }
