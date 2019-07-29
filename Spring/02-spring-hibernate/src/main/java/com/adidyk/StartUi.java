@@ -15,7 +15,7 @@ public class StartUi {
      * @param arg - arg.
      */
     public static void main(String[] arg) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("hibernate-context.xml");
         UserStore userStore = context.getBean(UserStore.class);
         userStore.save(new User("amanda", "doctor"));
         // https://dzone.com/tutorials/java/spring/spring-hibernate-integration-1.html
