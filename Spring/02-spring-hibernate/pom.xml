@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.adidyk.Spring.01-spring-jdbc</groupId>
-    <artifactId>01-spring-jdbc</artifactId>
+    <groupId>com.adidyk.Spring.02-spring-hibernate</groupId>
+    <artifactId>02-spring-hibernate</artifactId>
     <version>1.0</version>
 
     <parent>

@@ -1,5 +1,7 @@
 package com.adidyk.models;
 
+//import org.hibernate.annotations.Entity;
+import org.hibernate.annotations.Table;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -8,29 +10,29 @@ import java.util.Objects;
 /**
  * Class User.
  */
-@Entity
-@Table(name = "users")
-@Component
+//@Entity
+//@Table(name = "users")
+//@Component
 public class User {
 
     /**
      * @param id - user id.
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "user_id")
     private int id;
 
     /**
      * @param name - user name.
      */
-    @Column(name = "name")
+    //@Column(name = "name")
     private String name;
 
     /**
      * @param profession - user profession.
      */
-    @Column(name = "profession")
+    //@Column(name = "profession")
     private String profession;
 
     /**

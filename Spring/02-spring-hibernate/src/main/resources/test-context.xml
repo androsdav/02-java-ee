@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-contex.xsd">
+
+    <!-- spring annotation -->
+
+
+    <!-- bean -->
+    <bean id="user" class="com.adidyk.models.User">
+        <constructor-arg name="name" value="amanda"/>
+        <constructor-arg name="profession" value="doc"/>
+    </bean>
+
+    <bean id="b" class="com.adidyk.xxx.B">
+    </bean>
+
+    <bean id="c" class="com.adidyk.xxx.C">
+    </bean>
+
+    <bean id="a" class="com.adidyk.yyy.A">
+    </bean>
+
+    <context:annotation-config/>
+
+</beans>
