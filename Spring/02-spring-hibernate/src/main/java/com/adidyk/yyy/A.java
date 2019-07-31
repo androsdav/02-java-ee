@@ -10,18 +10,18 @@ public class A {
 
     private C c;
 
-    @Autowired
+    //@Autowired
     public A() {
         System.out.println("create bean A: " + this);
     }
 
-    @Autowired(required = false)
+    //@Autowired(required = false)
     public void setB(B b) {
         this.b = b;
         System.out.println("setting A.b: " + this.b);
     }
 
-    @Autowired(required = false)
+    //@Autowired(required = false)
     public void setC(C c) {
         this.c = c;
         System.out.println("setting A.c: " + this.c);

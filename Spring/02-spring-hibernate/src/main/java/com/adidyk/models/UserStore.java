@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Class UerStore.
  */
-@org.springframework.stereotype.Repository
+//@org.springframework.stereotype.Repository
 public class UserStore {
 
     /**
@@ -23,7 +23,7 @@ public class UserStore {
         this.template = template;
     }
 
-    @Transactional
+    //@Transactional
     public User save(User user) {
         this.template.save(user);
         return user;

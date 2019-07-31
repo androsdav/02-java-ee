@@ -1,5 +1,8 @@
 package com.adidyk;
 
+import com.adidyk.body.Body;
+import com.adidyk.body.Sedan;
+import com.adidyk.car.Car;
 import com.adidyk.models.User;
 import com.adidyk.models.UserStore;
 import com.adidyk.xxx.B;
@@ -24,9 +27,17 @@ public class StartUi {
         // https://dzone.com/tutorials/java/spring/spring-hibernate-integration-1.html
         System.out.println("test test");
         ApplicationContext context = new ClassPathXmlApplicationContext("test-context.xml");
-        B b = context.getBean(B.class);
-        C c = context.getBean(C.class);
-        A a = context.getBean(A.class);
+        //Body body = context.getBean("sedan",Body.class);
+        //body.showBody();
+        Car car = context.getBean("mercedes", Car.class);
+        car.showCar();
+        /*
+        Body body1 = context.getBean("sedan", Body.class);
+        body1.showBody();
+        System.out.println("  " + body + ",  " + body1);
+        //Body body1 = context.getBean("coupe", Body.class);
+        //body1.showBody();
+        */
 
     }
 }

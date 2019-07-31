@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 //@Entity
 //@Table(name = "users")
-//@Component
+@Component("user")
 public class User {
 
     /**
