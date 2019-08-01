@@ -9,12 +9,14 @@
 
     <!-- spring annotation -->
 
+    <context:component-scan base-package="com.adidyk.models, com.adidyk.xxx, com.adidyk.yyy"/>
 
-    <!-- bean -->
+    <!-- bean -
     <bean id="user" class="com.adidyk.models.User">
         <constructor-arg name="name" value="amanda"/>
         <constructor-arg name="profession" value="doc"/>
     </bean>
+    -->
 
     <bean id="b" class="com.adidyk.xxx.B">
     </bean>
@@ -25,6 +27,5 @@
     <bean id="a" class="com.adidyk.yyy.A">
     </bean>
 
-    <context:annotation-config/>
 
 </beans>

@@ -24,9 +24,12 @@ public class StartUi {
         // https://dzone.com/tutorials/java/spring/spring-hibernate-integration-1.html
         System.out.println("test test");
         ApplicationContext context = new ClassPathXmlApplicationContext("test-context.xml");
-        B b = context.getBean(B.class);
-        C c = context.getBean(C.class);
-        A a = context.getBean(A.class);
+        User user = context.getBean("user", User.class);
+        System.out.println(user);
+        //B b = context.getBeutan(B.class);
+        //C c = context.getBean(C.class);
+        //A a = context.getBean(A.class);
 
     }
 }
+ 
