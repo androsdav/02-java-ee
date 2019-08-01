@@ -5,27 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-contex.xsd">
+                           http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- spring annotation -->
-
-    <context:component-scan base-package="com.adidyk.models, com.adidyk.xxx, com.adidyk.yyy"/>
-
-    <!-- bean -
-    <bean id="user" class="com.adidyk.models.User">
-        <constructor-arg name="name" value="amanda"/>
-        <constructor-arg name="profession" value="doc"/>
-    </bean>
-    -->
-
-    <bean id="b" class="com.adidyk.xxx.B">
-    </bean>
-
-    <bean id="c" class="com.adidyk.xxx.C">
-    </bean>
-
-    <bean id="a" class="com.adidyk.yyy.A">
-    </bean>
-
-
+    <context:component-scan base-package="com.adidyk.yyy, com.adidyk.xxx, com.adidyk.models,
+                                          com.adidyk.body, com.adidyk.engine, com.adidyk.transmission, com.adidyk.car"/>
 </beans>
