@@ -14,7 +14,7 @@ CREATE TABLE users (
 
 
 
-INSERT INTO users(name, profession) VALUES('andros', 'cok');
+  INSERT INTO users(name, profession) VALUES('andros', 'cok');
 
 CREATE TABLE comments(
   id serial PRIMARY KEY,

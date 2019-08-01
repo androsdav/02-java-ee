@@ -6,10 +6,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-contex.xsd
+                           http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/tx
-                           http://www.springframework.org/schema/tool/spring-tx.xsd"
+                           http://www.springframework.org/schema/tx/spring-tx.xsd"
 >
+
+    <context:component-scan base-package="com.adidyk.models"/>
 
     <!-- dataSource -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -27,6 +29,13 @@
                 <value>com.adidyk.models.User</value>
             </list>
         </property>
+        <!--
+        <property name="mappingResources">
+            <list>
+                <value>User.hbm.xml</value>
+            </list>
+        </property>
+        -->
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.bytecode.dialect">org.hibernate.dialect.PostgreSQL94Dialect</prop>
@@ -39,16 +48,22 @@
     <!-- template -->
     <bean id="template" class="org.springframework.orm.hibernate5.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="checkWriteOperations" value="false"/>
     </bean>
 
     <!-- transactionManager -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
+
+    </bean>
+
+    <bean  id="userStore" class="com.adidyk.models.UserStore">
+        <constructor-arg name="template" ref="template"/>
     </bean>
 
     <!-- context -->
     <context:component-scan base-package="com.adidyk.models, com.adidyk"/>
     <context:annotation-config/>
-    <tx:annotation-driven/>
+    <!--<tx:annotation-driven/>-->
 
 </beans>
