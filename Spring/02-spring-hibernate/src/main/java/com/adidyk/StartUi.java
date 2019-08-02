@@ -1,5 +1,7 @@
 package com.adidyk;
 
+import com.adidyk.dao.DAO;
+import com.adidyk.dao.UserDAO;
 import com.adidyk.models.User;
 import com.adidyk.models.UserStore;
 import org.springframework.context.ApplicationContext;
@@ -17,12 +19,9 @@ public class StartUi {
     public static void main(String[] arg) {
        System.out.println("test test");
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate-context.xml");
-        UserStore userStore = context.getBean("userStore", UserStore.class);
-        //User user = context.getBean("user", User.class);
-        //user.setName("amanda");
-        //user.setProfession("sadasd");
+        DAO userDAO = context.getBean("userDAO", DAO.class);
         User user = new User("amanda", "doctor");
-        userStore.save(user);
+        userDAO.add(user);
         System.out.println(user);
     }
 }

@@ -1,11 +1,7 @@
 package com.adidyk.models;
 
-import org.hibernate.query.criteria.internal.predicate.ImplicitNumericExpressionTypeDeterminer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.util.Objects;
 
