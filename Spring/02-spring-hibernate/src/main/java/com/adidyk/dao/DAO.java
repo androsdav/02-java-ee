@@ -7,6 +7,7 @@ import java.util.List;
  * @param <Entity> - generic.
  * @param <Key> - generic.
  */
+
 public interface DAO<Entity, Key> {
 
     /**
@@ -39,6 +40,5 @@ public interface DAO<Entity, Key> {
      * @return - returns all entity.
      */
     public List<Entity> getList();
-
 
 }

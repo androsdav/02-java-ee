@@ -1,10 +1,11 @@
 package com.adidyk.dao;
 
 import com.adidyk.models.User;
+import com.sun.istack.Nullable;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @Repository
 @Qualifier("userDAO")
-public class UserDAO implements DAO<User, Integer>{
+public class UserDAO implements DAO<User, Integer> {
 
     /**
      * @param template - hibernate template.
@@ -28,7 +29,6 @@ public class UserDAO implements DAO<User, Integer>{
     UserDAO() {
     }
 
-
     /**
      * UserDAO - constructor.
      * @param template - hibernate template.
@@ -39,23 +39,23 @@ public class UserDAO implements DAO<User, Integer>{
     }
 
     /**
-     * add - add entity.
-     * @param user - generic entity.
+     * add - add user.
+     * @param user - user.
      */
-    //@Override
+    @Override
     @Transactional
     public void add(User user) {
         this.template.save(user);
-
     }
 
     /**
-     * @param integer - generic key.
+     * @param id - user id.
      * @return - returns entity.
      */
-    //@Override
-    public User get(Integer integer) {
-        return null;
+    @Override
+    public User get(Integer id) {
+        User user = this.template.get(User.class, id);
+        return user;
     }
 
     /**
@@ -63,29 +63,31 @@ public class UserDAO implements DAO<User, Integer>{
      *
      * @param user - generic entity.
      */
-    //@Override
+    @Override
+    @Transactional
     public void update(User user) {
-
+        this.template.update(user);
     }
 
     /**
      * delete - delete entity.
-     *
      * @param user - generic entity.
      */
-    //@Override
+    @Override
+    @Transactional
     public void delete(User user) {
-
+        this.template.delete(user);
     }
 
     /**
-     * getList - returns all entity.
-     *
-     * @return - returns all entity.
+     * getList - returns all user.
+     * @return - returns all user.
      */
-    //@Override
+    @Override
+    @Transactional
     public List<User> getList() {
-        return null;
+        List<User> list = (List<User>) this.template.findByNamedParam("FROM User");
+        return list;
     }
 
 }
