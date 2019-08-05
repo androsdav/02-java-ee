@@ -24,15 +24,19 @@ public class StartUi {
         //User user = new User("sandra1", "designer1");
         //userDAO.add(user);
         //userDAO.delete(new User(2));
-        System.out.println(userDAO.get(1));
-        System.out.println(userDAO.get(2));
-        System.out.println(userDAO.get(3));
-        System.out.println(userDAO.get(4));
-        System.out.println(userDAO.get(5));
+
+
+        System.out.println(userDAO.get("amanda"));
+
         System.out.println("-----------------------");
+        /*
         ArrayList<User> list = (ArrayList<User>) userDAO.getList();
-        for(User user : list) {
-            System.out.println(user);
+        for(User user1 : list) {
+            System.out.println(user1);
         }
+        */
+
+        // https://www.javarticles.com/2015/04/spring-hibernatetempate-example.html
+        // https://www.javaguides.net/2018/11/hibernate-query-language-insert-update.html
     }
 }
