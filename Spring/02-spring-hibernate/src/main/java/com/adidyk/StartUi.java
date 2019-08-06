@@ -21,20 +21,18 @@ public class StartUi {
        System.out.println("test test");
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate-context.xml");
         DAO userDAO = context.getBean("userDAO", DAO.class);
-        //User user = new User("sandra1", "designer1");
-        //userDAO.add(user);
+        //User user1 = new User("bob", "model");
+        //userDAO.add(user1);
         //userDAO.delete(new User(2));
 
 
-        System.out.println(userDAO.get("amanda"));
+        //System.out.println(userDAO.get("amanda"));
 
         System.out.println("-----------------------");
-        /*
         ArrayList<User> list = (ArrayList<User>) userDAO.getList();
-        for(User user1 : list) {
-            System.out.println(user1);
+        for(User user : list) {
+            System.out.println(user);
         }
-        */
 
         // https://www.javarticles.com/2015/04/spring-hibernatetempate-example.html
         // https://www.javaguides.net/2018/11/hibernate-query-language-insert-update.html

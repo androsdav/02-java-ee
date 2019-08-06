@@ -3,7 +3,7 @@ package com.adidyk.dao;
 import com.adidyk.models.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+//import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate5.HibernateCallback;
@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -56,9 +57,20 @@ public class UserDAO implements DAO<User, String> {
      */
     @Override
     public User get(String name) {
+        this.template.execute(new HibernateCallback<Object>() {
+            @Override
+            public Object doInHibernate(Session session) throws HibernateException {
+                Query query = session.createQuery("SELECT u FROM User AS u WHERE u.name ");
+
+                return null;
+            }
+        };
+
+            /*
         User user = this.template.execute(new HibernateCallback<User>() {
             @Override
             public User doInHibernate(Session session) throws HibernateException {
+                Query query
                 
                 /*
                 Query query = session.createQuery("SELECT u from User as u where u.name=:userName").ge;
@@ -66,13 +78,14 @@ public class UserDAO implements DAO<User, String> {
                 List<User> list = query.getResultList();
                 User user1 = list.get(0);
                 */
+        /*
                 return null;
             }
-        });
+        });*/
 
         //User user = this.template.get(User.class, id);
         //User user = this.template.find("from User WHERE user.id = ?", id);
-        return user;
+        return null;
     }
 
     /**
@@ -102,11 +115,16 @@ public class UserDAO implements DAO<User, String> {
     @Override
     @Transactional
     public List<User> getList() {
-        String string = "amanda";
+        //User user = new User();
+        //user.setName("bob");
+        //user.setProfession("model");
+        //String users = "test";
+        //List<User> list = this.template.findByExample(user);
+        //String string = "amanda";
         //List<User> list = (List<User>) this.template.find("SELECT FROM User AS u WHERE name = amanda);
         //https://docs.spring.io/spring/docs/current/spring-framework-reference/data-access.html#orm-hibernate
                 //this.template.execute()
-        //List<?> list = this.template.find("select u from User AS u WHERE u.name IN (?1)", "amanda", User.class);
+        //List<?> list = this.template.find("select u from User AS u WHERE u.name IN=:?1", "amanda", User.class);
         //return (List<User>) list;
         return null;
     }
